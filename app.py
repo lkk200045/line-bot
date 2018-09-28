@@ -78,9 +78,7 @@ def handle_message(event):
     else:
         s = '我聽不懂' 
 
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=s))
+
 
 
 if __name__ == "__main__":
