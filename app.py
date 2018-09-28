@@ -64,7 +64,7 @@ def handle_message(event):
     result = r.json()
     a = result['topScoringIntent']['intent']
 
-    if msg == '貼圖':
+    if '貼圖' in msg:
         sticker_message = StickerSendMessage(
             package_id='1',
             sticker_id='1'
