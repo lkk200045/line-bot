@@ -67,38 +67,20 @@ def handle_message(event):
     if a == '告白':
         s = '謝謝我不愛妳'
         line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=s))
-        sticker_message = StickerSendMessage(
-        package_id='1',
-        sticker_id='1'
-        )
-        
+            event.reply_token,
+            TextSendMessage(text=s))
     elif a == '問候':
         s = '早安，慈濟歡迎您'
-        line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=s))
-    
     elif a == '誇獎':
         s = '就算你誇獎我我也不會開心的 (害羞)'
-        line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=s))
-   
-   elif a == '隱私':
+    elif a == '隱私':
         s = '不告訴你!!'
-        line_bot_api.reply_message(
+    else:
+        s = '我聽不懂' 
+
+    line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=s))
-    
-    else:
-        s = '我聽不懂'
-        line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=s)) 
-
-    
 
 
 if __name__ == "__main__":
