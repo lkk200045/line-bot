@@ -64,12 +64,14 @@ def handle_message(event):
     result = r.json()
     a = result['topScoringIntent']['intent']
 
-    if a == '告白':
-        s = '謝謝我不愛妳'
+    if msg == '貼圖':
         sticker_message = StickerSendMessage(
             package_id='1',
             sticker_id='1'
             )
+
+    if a == '告白':
+        s = '謝謝我不愛妳'     
     elif a == '問候':
         s = '早安，慈濟歡迎您'
     elif a == '誇獎':
