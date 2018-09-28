@@ -59,16 +59,18 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
+
+     if '貼圖' in msg:
+        sticker_message = StickerSendMessage(
+            package_id='1',
+            sticker_id='1'
+            )
     params['q'] = msg
     r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
     result = r.json()
     a = result['topScoringIntent']['intent']
 
-    if '貼圖' in msg:
-        sticker_message = StickerSendMessage(
-            package_id='1',
-            sticker_id='1'
-            )
+   
 
     if a == '告白':
         s = '謝謝我不愛妳'     
