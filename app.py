@@ -66,9 +66,10 @@ def handle_message(event):
 
     if a == '告白':
         s = '謝謝我不愛妳'
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=s))
+        sticker_message = StickerSendMessage(
+            package_id='2',
+            sticker_id='36'
+            )
     elif a == '問候':
         s = '早安，慈濟歡迎您'
     elif a == '誇獎':
@@ -78,7 +79,9 @@ def handle_message(event):
     else:
         s = '我聽不懂' 
 
-
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=s))
 
 
 if __name__ == "__main__":
