@@ -67,8 +67,8 @@ def handle_message(event):
     if a == '告白':
         s = '謝謝我不愛妳'
         sticker_message = StickerSendMessage(
-            package_id='2',
-            sticker_id='36'
+            package_id='1',
+            sticker_id='1'
             )
     elif a == '問候':
         s = '早安，慈濟歡迎您'
