@@ -78,7 +78,24 @@ def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=s))
-
+    message = TemplateSendMessage(
+    alt_text='Confirm template',
+    template=ConfirmTemplate(
+        text='Are you sure?',
+        actions=[
+            PostbackTemplateAction(
+                label='postback',
+                text='postback text',
+                data='action=buy&itemid=1'
+            ),
+            MessageTemplateAction(
+                label='message',
+                text='message text'
+            )
+        ]
+    )
+)
+line_bot_api.reply_message(event.reply_token, message)
 
 if __name__ == "__main__":
     app.run()
