@@ -1,4 +1,5 @@
 #SDK 載入LINE SDK
+import requests
 
 from flask import Flask, request, abort
 
@@ -11,6 +12,23 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
+
+headers = {
+    # Request headers
+    'Ocp-Apim-Subscription-Key': '5cf8bae594b24645bc0971c7b1169ed9',
+}
+
+params ={
+    # Query parameter
+    'q': '',
+    # Optional request parameters, set to default values
+    'timezoneOffset': '0',
+    'verbose': 'false',
+    'spellCheck': 'false',
+    'staging': 'false',
+}
+
+
 
 app = Flask(__name__)
 
@@ -39,10 +57,16 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
+    params['q'] = msq
+    r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
+    result = r.json()
+    a = result['topScoringIntent']['intent']
+
+    if a == '告白':
+        s = '謝謝我不愛妳'
+
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=msg))
-
-
+        TextSendMessage(text=s))
 if __name__ == "__main__":
     app.run()
