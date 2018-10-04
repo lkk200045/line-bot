@@ -63,7 +63,7 @@ def work(message):
         return s
     elif message == '中山大學':
         s = '請選擇工資'
-
+        return s
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
@@ -75,7 +75,7 @@ def handle_message(event):
         s = work(msg)
     else:
         if a == '告白':
-            s = '謝謝我不愛妳'     
+            s = '謝謝我不愛妳'
         elif a == '問候':
             s = '早安，慈濟歡迎您'
         elif a == '誇獎':
