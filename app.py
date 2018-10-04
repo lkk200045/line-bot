@@ -54,7 +54,15 @@ def callback():
         abort(400)
 
     return 'OK'
-
+def work(message):
+    if message == '找工作':
+        s = '請輸入時間'
+        return s
+    elif message == '時':
+        s = '請選擇地點'
+        return s
+    elif message == '中山大學':
+        s = '請選擇工資'
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -63,8 +71,8 @@ def handle_message(event):
     r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
     result = r.json()
     a = result['topScoringIntent']['intent']
-    if '找工作' in msg:
-        s= '請輸入時間'
+    if '找工作' or '時' or '中山大學' in msg:
+        s = work(msg)
     else:
         if a == '告白':
             s = '謝謝我不愛妳'     
