@@ -12,7 +12,7 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
     ImageSendMessage,LocationMessage,TemplateSendMessage, ButtonsTemplate, URITemplateAction,
-    PostbackTemplateAction, MessageTemplateAction, CarouselTemplate, CarouselColumn,DatetimePickerTemplateAction
+    PostbackTemplateAction, MessageTemplateAction, CarouselTemplate, CarouselColumn, ConfirmTemplate
 )
 
 
@@ -30,15 +30,7 @@ headers = {
     'Ocp-Apim-Subscription-Key': '5cf8bae594b24645bc0971c7b1169ed9',
 }
 
-params ={
-    # Query parameter
-    'q': '我愛你',
-    # Optional request parameters, set to default values
-    'timezoneOffset': '0',
-    'verbose': 'false',
-    'spellCheck': 'false',
-    'staging': 'false',
-}
+
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -56,16 +48,7 @@ def callback():
         abort(400)
 
     return 'OK'
-def work(message):
-    if '找工作' in message:
-        s = '請輸入時間'
-        return s
-    elif message == '時':
-        s = '請選擇地點'
-        return s
-    elif message == '中山大學':
-        s = '請選擇工資'
-        return s
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
@@ -139,7 +122,29 @@ def handle_message(event):
         ]
         )
     )
-        line_bot_api.reply_message(event.reply_token,Carousel_template)      
+        line_bot_api.reply_message(event.reply_token,Carousel_template) 
+
+    elif event.message.text == "正妹求搬家" :
+        Confirm_template = TemplateSendMessage(
+            alt_text='目錄 template',
+            template=ConfirmTemplate(
+                title='這是ConfirmTemplate',
+                text='這就是ConfirmTemplate,用於兩種按鈕選擇',
+                actions=[                              
+                PostbackTemplateAction(
+                    label='Y',
+                    text='Y',
+                    data='action=buy&itemid=1'
+                    ),
+                MessageTemplateAction(
+                    label='N',
+                    text='N'
+                    )
+                ]
+            )
+    )
+        line_bot_api.reply_message(event.reply_token,Confirm_template)
+
         
 if __name__ == "__main__":
     app.run()
