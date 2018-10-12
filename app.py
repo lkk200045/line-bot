@@ -81,7 +81,7 @@ def handle_message(event):
         template=ButtonsTemplate(
             title='Template-樣板介紹',
             text='Template分為四種，也就是以下四種：',
-            thumbnail_image_url='https://example.com/image.jpg',
+            thumbnail_image_url='https://i.imgur.com/kzi5kKy.jpg',
             actions=[
                 MessageTemplateAction(
                     label='Buttons Template',
