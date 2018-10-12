@@ -55,7 +55,7 @@ def callback():
 
     return 'OK'
 def work(message):
-    if message == '找工作':
+    if '找工作' in message:
         s = '請輸入時間'
         return s
     elif message == '時':
@@ -73,21 +73,38 @@ def handle_message(event):
     a = result['topScoringIntent']['intent']
     if '找工作' or '時' or '中山大學' in msg:
         s = work(msg)
-    else:
-        if a == '告白':
-            s = '謝謝我不愛妳'
-        elif a == '問候':
-            s = '早安，慈濟歡迎您'
-        elif a == '誇獎':
-            s = '就算你誇獎我我也不會開心的 (害羞)'
-        elif a == '隱私':
-            s = '不告訴你!!'
-        else:
-            s = '我聽不懂' 
-
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=s))
+    
+    elif event.message.text == "樣板":    
+        buttons_template = TemplateSendMessage(
+        alt_text='目錄 template',
+        template=ButtonsTemplate(
+            title='Template-樣板介紹',
+            text='Template分為四種，也就是以下四種：',
+            thumbnail_image_url='圖片網址',
+            actions=[
+                MessageTemplateAction(
+                    label='Buttons Template',
+                    text='Buttons Template'
+                ),
+                MessageTemplateAction(
+                    label='Confirm template',
+                    text='Confirm template'
+                ),
+                MessageTemplateAction(
+                    label='Carousel template',
+                    text='Carousel template'
+                ),
+                MessageTemplateAction(
+                    label='Image Carousel',
+                    text='Image Carousel'
+                )
+            ]
+        )
+    )
+        line_bot_api.reply_message(event.reply_token, buttons_template)
 
 
 if __name__ == "__main__":
