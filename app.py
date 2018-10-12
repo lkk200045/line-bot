@@ -89,6 +89,22 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             buttons_template_message)
+    
+    elif event.message.text == "樣本":
+        buttons_template_message = TemplateSendMessage(
+            alt_text='hi',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
+                title='hi',
+                text='aa',
+                actions=[
+                URITemplateAction(
+                    label='查看南瓜地圖',
+                    uri="line://nv/location"
+                    ),
+                ]
+            )
+        )
 
 
 if __name__ == "__main__":
