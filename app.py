@@ -12,7 +12,7 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
     ImageSendMessage,LocationMessage,TemplateSendMessage, ButtonsTemplate, URITemplateAction,
-    PostbackTemplateAction, MessageTemplateAction
+    PostbackTemplateAction, MessageTemplateAction, CarouselTemplate, CarouselColumn
 )
 
 
@@ -117,54 +117,55 @@ def handle_message(event):
             event.reply_token,
             buttons_template_message)
    
-    elif event.message.text == "message text":      
+    elif event.message.text == "message text":
         Carousel_template = TemplateSendMessage(
-        alt_text='目錄 template',
-        template=CarouselTemplate(
-        columns=[
+            alt_text='Carousel template',
+            template=CarouselTemplate(
+                columns=[
                 CarouselColumn(
-                    thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
+                    thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',,
                     title='this is menu1',
                     text='description1',
                     actions=[
-                        PostbackTemplateAction(
-                            label='postback1',
-                            text='postback text1',
-                            data='action=buy&itemid=1'
-                        ),
-                        MessageTemplateAction(
-                            label='message1',
-                            text='message text1'
-                        ),
-                        URITemplateAction(
-                            label='uri1',
-                            uri='網址'
-                        )
-                    ]
-                ),
+                    PostbackTemplateAction(
+                        label='postback1',
+                        text='postback text1',
+                        data='action=buy&itemid=1'
+                    ),
+                    MessageTemplateAction(
+                        label='message1',
+                        text='message text1'
+                    ),
+                    URITemplateAction(
+                        label='uri1',
+                        uri='http://www.xiaosean.website/'
+                    )
+                ]
+            ),
                 CarouselColumn(
-                    thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
+                    thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',,
                     title='this is menu2',
                     text='description2',
                     actions=[
-                        PostbackTemplateAction(
-                            label='postback2',
-                            text='postback text2',
-                            data='action=buy&itemid=2'
-                        ),
-                        MessageTemplateAction(
-                            label='message2',
-                            text='message text2'
-                        ),
-                        URITemplateAction(
-                            label='連結2',
-                            uri='網址'
-                            )
-                        ]
+                    PostbackTemplateAction(
+                        label='postback2',
+                        text='postback text2',
+                        data='action=buy&itemid=2'
+                    ),
+                    MessageTemplateAction(
+                        label='message2',
+                        text='message text2'
+                    ),
+                    URITemplateAction(
+                        label='連結2',
+                        uri='http://www.xiaosean.website/'
                     )
                 ]
             )
+        ]
         )
-        line_bot_api.reply_message(event.reply_token,Carousel_template)
+    )
+        line_bot_api.reply_message(event.reply_token,Carousel_template)      
+        
 if __name__ == "__main__":
     app.run()
