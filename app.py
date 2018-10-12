@@ -75,28 +75,20 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入時間'))
     elif event.message.text == "按鈕":
         buttons_template_message = TemplateSendMessage(
-            alt_text='Buttons template',
+            alt_text="Please tell me where you are",
             template=ButtonsTemplate(
-                thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
-                title='Menu',
-                text='Please select',
+                text="Please tell me where you are",
                 actions=[
-                PostbackAction(
-                    label='postback',
-                    text='postback text',
-                    data='action=buy&itemid=1'
-                    ),
-                MessageAction(
-                    label='message',
-                    text='message text'
-                    ),
-                URIAction(
-                    label='uri',
-                    uri='http://example.com/'
+                URITemplateAction(
+                    label="Send my location",
+                    uri="line://nv/location"
                     )
                 ]
-                )
             )
+            )
+        line_bot_api.reply_message(
+            event.reply_token,
+            buttons_template_message)
 
 
 if __name__ == "__main__":
