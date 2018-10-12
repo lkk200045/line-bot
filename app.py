@@ -116,7 +116,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             buttons_template_message)
-    elif event.message.text == "Image Carousel":     
+    elif event.message.text == "message text":     
         Image_Carousel = TemplateSendMessage(
             alt_text='目錄 template',
             template=ImageCarouselTemplate(
