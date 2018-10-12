@@ -78,7 +78,7 @@ def handle_message(event):
         template=ButtonsTemplate(
             title='這是ButtonsTemplate',
             text='ButtonsTemplate可以傳送text,uri',
-            thumbnail_image_url='顯示在開頭的大圖片網址',
+            thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
             actions=[
                 MessageTemplateAction(
                     label='ButtonsTemplate',
@@ -86,7 +86,7 @@ def handle_message(event):
                 ),
                 URITemplateAction(
                     label='VIDEO1',
-                    uri='影片網址'
+                    uri='https://www.youtube.com/watch?v=pHEOgcuV0Ok'
                 ),
                 PostbackTemplateAction(
                     label='postback',
@@ -96,7 +96,7 @@ def handle_message(event):
             ]
         )
     )
-    line_bot_api.reply_message(event.reply_token, buttons_template)
+        line_bot_api.reply_message(event.reply_token, buttons_template)
 
 
 if __name__ == "__main__":

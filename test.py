@@ -67,41 +67,36 @@ def work(message):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    params['q'] = msg
-    r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
-    result = r.json()
-    a = result['topScoringIntent']['intent']
-    if '找工作' or '時' or '中山大學' in msg:
-        s = work(msg)
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=s))
-    elif msg =='樣板':
-       buttons_template = TemplateSendMessage(
-        alt_text='目錄 template',
+    msg = msg.encode('utf-8')
+    if event.message.text == "文字":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
+    elif event.message.text == '找工作':
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入時間'))
+    elif event.message.text == "按鈕":
+        buttons_template = TemplateSendMessage(
+        alt_text='Buttons Template',
         template=ButtonsTemplate(
-            title='Template-樣板介紹',
-            text='Template分為四種，也就是以下四種：',
-            thumbnail_image_url='https://example.com/image.jpg',
+            title='這是ButtonsTemplate',
+            text='ButtonsTemplate可以傳送text,uri',
+            thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
             actions=[
                 MessageTemplateAction(
-                    label='Buttons Template',
-                    text='Buttons Template'
+                    label='ButtonsTemplate',
+                    text='ButtonsTemplate'
                 ),
-                MessageTemplateAction(
-                    label='Confirm template',
-                    text='Confirm template'
+                URITemplateAction(
+                    label='VIDEO1',
+                    uri='https://www.youtube.com/watch?v=pHEOgcuV0Ok'
                 ),
-                MessageTemplateAction(
-                    label='Carousel template',
-                    text='Carousel template'
-                ),
-                MessageTemplateAction(
-                    label='Image Carousel',
-                    text='Image Carousel'
+                PostbackTemplateAction(
+                    label='postback',
+                    text='postback text',
+                    data='postback1'
                 )
             ]
         )
     )
-       line_bot_api.reply_message(event.reply_token, buttons_template)
+        line_bot_api.reply_message(event.reply_token, buttons_template)
 
 
 if __name__ == "__main__":
