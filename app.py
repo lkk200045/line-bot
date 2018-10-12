@@ -70,11 +70,10 @@ def handle_message(event):
     msg = msg.encode('utf-8')
     if event.message.text == "文字":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
-    elif '找工作' or '時' or '中山大學' in msg:
-        s = work(msg)
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=s))
+    elif event.message.text == '找工作':
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入時間'))
     
-    elif msg == 'a':
+    elif event.message.text == 'a':
         buttons_template = TemplateSendMessage(
         alt_text='目錄 template',
         template=ButtonsTemplate(
