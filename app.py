@@ -123,7 +123,7 @@ def handle_message(event):
             template=CarouselTemplate(
                 columns=[
                 CarouselColumn(
-                    thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',,
+                    thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
                     title='this is menu1',
                     text='description1',
                     actions=[
@@ -143,7 +143,7 @@ def handle_message(event):
                 ]
             ),
                 CarouselColumn(
-                    thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',,
+                    thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
                     title='this is menu2',
                     text='description2',
                     actions=[
