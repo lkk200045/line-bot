@@ -128,8 +128,8 @@ def handle_message(event):
         Confirm_template = TemplateSendMessage(
             alt_text='目錄 template',
             template=ConfirmTemplate(
-                title='這是ConfirmTemplate',
-                text='這就是ConfirmTemplate,用於兩種按鈕選擇',
+                title='確認',
+                text='您選的資料為正妹求搬家',
                 actions=[                              
                 PostbackTemplateAction(
                     label='Y',
@@ -145,6 +145,29 @@ def handle_message(event):
     )
         line_bot_api.reply_message(event.reply_token,Confirm_template)
 
+    elif event.message.text == 'Y':
+        buttons_template_message = TemplateSendMessage(
+            alt_text='hi',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://www.limitlessiq.com/media/catalog/product/cache/1/small_image/200x200/9df78eab33525d08d6e5fb8d27136e95/z/0/z01.jpg',
+                title='請選擇身分',
+                text='您好',
+                actions=[
+                MessageTemplateAction(
+                    label='學生兼差', text='學生兼差'
+                    ),
+                MessageTemplateAction(
+                    label='上班族兼差', text='上班族兼差'
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(
+            event.reply_token,
+            buttons_template_message)
+        
+    elif event.message.text == '學生兼差':
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入姓名'))
         
 if __name__ == "__main__":
     app.run()

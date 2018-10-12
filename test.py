@@ -10,9 +10,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
-    ImageSendMessage,LocationMessage,TemplateSendMessage, ButtonsTemplate, URITemplateAction,
-    PostbackTemplateAction, MessageTemplateAction, CarouselTemplate, CarouselColumn, ConfirmTemplate
+    MessageEvent, TextMessage, TextSendMessage,StickerSendMessage
 )
 
 
@@ -69,99 +67,42 @@ def work(message):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    msg = msg.encode('utf-8')
-
-    if event.message.text == "找工作":
-        buttons_template_message = TemplateSendMessage(
-            alt_text='hi',
-            template=ButtonsTemplate(
-                thumbnail_image_url='https://www.limitlessiq.com/media/catalog/product/cache/1/small_image/200x200/9df78eab33525d08d6e5fb8d27136e95/z/0/z01.jpg',
-                title='請選擇所在城市',
-                text='歡迎光臨',
-                actions=[
-                MessageTemplateAction(
-                    label='高雄', text='高雄'
-                    ),
-                MessageTemplateAction(
-                    label='台北', text='台北'
-                    ),
-                MessageTemplateAction(
-                    label='台南', text='台南'
-                    ),
-                MessageTemplateAction(
-                    label='台中', text='台中'
-                    )
-                ]
-            )
-        )
-        line_bot_api.reply_message(
-            event.reply_token,
-            buttons_template_message)
-   
-    elif event.message.text == "高雄":
-        Carousel_template = TemplateSendMessage(
-            alt_text='Carousel template',
-            template=CarouselTemplate(
-                columns=[
-                CarouselColumn(
-                    thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
-                    title='中山跑腿小弟',
-                    text='幫忙外送飲料，詳細地點高雄中山大學，時薪200',
-                    actions=[
-                    MessageTemplateAction(
-                        label='中山跑腿小弟',
-                        text='中山跑腿小弟'
-                    )
-                ]
-            ),
-                CarouselColumn(
-                    thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
-                    title='鹽程幫忙掃地',
-                    text='幫忙打掃宿舍，詳細地點鹽埕區五福四路100號，時薪200',
-                    actions=[
-                    MessageTemplateAction(
-                        label='鹽程幫忙掃地',
-                        text='鹽程幫忙掃地'
-                    )
-                ]
-            ),
-             CarouselColumn(
-                    thumbnail_image_url='https://static.juksy.com/files/articles/68605/5a35353b09a3d.jpg',
-                    title='正妹求搬家',
-                    text='幫忙搬家，詳細地點鹽埕區五福四路1號，友情無價，陪你吃頓飯',
-                    actions=[
-                    MessageTemplateAction(
-                        label='正妹求搬家',
-                        text='正妹求搬家'
-                    )
-                ]
-            ),
-        ]
-        )
-    )
-        line_bot_api.reply_message(event.reply_token,Carousel_template) 
-
-    elif event.message.text == "正妹求搬家" :
-        Confirm_template = TemplateSendMessage(
+    params['q'] = msg
+    r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
+    result = r.json()
+    a = result['topScoringIntent']['intent']
+    if '找工作' or '時' or '中山大學' in msg:
+        s = work(msg)
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=s))
+    elif msg =='樣板':
+       buttons_template = TemplateSendMessage(
         alt_text='目錄 template',
-        template=ConfirmTemplate(
-            title='這是ConfirmTemplate',
-            text='這就是ConfirmTemplate,用於兩種按鈕選擇',
-            actions=[                              
-                PostbackTemplateAction(
-                    label='Y',
-                    text='Y',
-                    data='action=buy&itemid=1'
+        template=ButtonsTemplate(
+            title='Template-樣板介紹',
+            text='Template分為四種，也就是以下四種：',
+            thumbnail_image_url='圖片網址',
+            actions=[
+                MessageTemplateAction(
+                    label='Buttons Template',
+                    text='Buttons Template'
                 ),
                 MessageTemplateAction(
-                    label='N',
-                    text='N'
+                    label='Confirm template',
+                    text='Confirm template'
+                ),
+                MessageTemplateAction(
+                    label='Carousel template',
+                    text='Carousel template'
+                ),
+                MessageTemplateAction(
+                    label='Image Carousel',
+                    text='Image Carousel'
                 )
             ]
         )
     )
-        line_bot_api.reply_message(event.reply_token,Confirm_template)
+    =line_bot_api.reply_message(event.reply_token, buttons_template)
 
-        
+
 if __name__ == "__main__":
     app.run()
