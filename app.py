@@ -75,9 +75,9 @@ def handle_message(event):
         buttons_template_message = TemplateSendMessage(
             alt_text='hi',
             template=ButtonsTemplate(
-                thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
+                thumbnail_image_url='https://photos.google.com/photo/AF1QipN6ssz4Ewsiik3Ef-R0tzzSOKjlqlf6y4LFLJgf',
                 title='請選擇所在城市',
-                text='aa',
+                text='歡迎光臨',
                 actions=[
                 MessageTemplateAction(
                     label='高雄', text='高雄'
@@ -89,48 +89,30 @@ def handle_message(event):
             event.reply_token,
             buttons_template_message)
    
-    elif event.message.text == "message text":
+    elif event.message.text == "高雄":
         Carousel_template = TemplateSendMessage(
             alt_text='Carousel template',
             template=CarouselTemplate(
                 columns=[
                 CarouselColumn(
                     thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
-                    title='this is menu1',
-                    text='description1',
+                    title='中山跑腿小弟',
+                    text='幫忙外送飲料，詳細地點高雄中山大學，時薪200',
                     actions=[
-                    PostbackTemplateAction(
-                        label='postback1',
-                        text='postback text1',
-                        data='action=buy&itemid=1'
-                    ),
                     MessageTemplateAction(
                         label='message1',
-                        text='message text1'
-                    ),
-                    URITemplateAction(
-                        label='uri1',
-                        uri='http://www.xiaosean.website/'
+                        text='中山跑腿小弟'
                     )
                 ]
             ),
                 CarouselColumn(
                     thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
-                    title='this is menu2',
-                    text='description2',
+                    title='鹽程幫忙掃地',
+                    text='幫忙打掃宿舍，詳細地點鹽埕區五福四路100號，時薪200',
                     actions=[
-                    PostbackTemplateAction(
-                        label='postback2',
-                        text='postback text2',
-                        data='action=buy&itemid=2'
-                    ),
                     MessageTemplateAction(
                         label='message2',
-                        text='message text2'
-                    ),
-                    URITemplateAction(
-                        label='連結2',
-                        uri='http://www.xiaosean.website/'
+                        text='鹽程幫忙掃地'
                     )
                 ]
             )
