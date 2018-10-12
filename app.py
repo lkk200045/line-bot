@@ -99,10 +99,17 @@ def handle_message(event):
                 title='hi',
                 text='aa',
                 actions=[
-                URITemplateAction(
-                    label='查看南瓜地圖',
-                    uri="line://nv/location"
+                PostbackTemplateAction(
+                    label='postback還會回傳data參數',
+                    text='postback text',
+                    data='action=buy&itemid=1'
                     ),
+                MessageTemplateAction(
+                    label='message會回傳text文字', text='message text'
+                    ),
+                URITemplateAction(
+                    label='uri可回傳網址', uri='http://www.xiaosean.website/'
+                    )
                 ]
             )
         )
