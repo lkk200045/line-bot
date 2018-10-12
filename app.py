@@ -73,30 +73,29 @@ def handle_message(event):
     elif event.message.text == '找工作':
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入時間'))
     elif event.message.text == "按鈕":
-        buttons_template = TemplateSendMessage(
-        alt_text='Buttons Template',
-        template=ButtonsTemplate(
-            title='這是ButtonsTemplate',
-            text='ButtonsTemplate可以傳送text,uri',
-            thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
-            actions=[
-                MessageTemplateAction(
-                    label='ButtonsTemplate',
-                    text='ButtonsTemplate'
-                ),
-                URITemplateAction(
-                    label='VIDEO1',
-                    uri='https://www.youtube.com/watch?v=pHEOgcuV0Ok'
-                ),
-                PostbackTemplateAction(
+        buttons_template_message = TemplateSendMessage(
+            alt_text='Buttons template',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
+                title='Menu',
+                text='Please select',
+                actions=[
+                PostbackAction(
                     label='postback',
                     text='postback text',
-                    data='postback1'
+                    data='action=buy&itemid=1'
+                    ),
+                MessageAction(
+                    label='message',
+                    text='message text'
+                    ),
+                URIAction(
+                    label='uri',
+                    uri='http://example.com/'
+                    )
+                ]
                 )
-            ]
-        )
-    )
-        line_bot_api.reply_message(event.reply_token, buttons_template)
+            )
 
 
 if __name__ == "__main__":
