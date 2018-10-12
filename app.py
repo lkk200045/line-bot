@@ -72,35 +72,31 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
     elif event.message.text == '找工作':
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入時間'))
-    
-    elif event.message.text == 'a':
+    elif event.message.text == "按鈕":
         buttons_template = TemplateSendMessage(
-        alt_text='目錄 template',
+        alt_text='Buttons Template',
         template=ButtonsTemplate(
-            title='Template-樣板介紹',
-            text='Template分為四種，也就是以下四種：',
-            thumbnail_image_url='https://i.imgur.com/kzi5kKy.jpg',
+            title='這是ButtonsTemplate',
+            text='ButtonsTemplate可以傳送text,uri',
+            thumbnail_image_url='顯示在開頭的大圖片網址',
             actions=[
                 MessageTemplateAction(
-                    label='Buttons Template',
-                    text='Buttons Template'
+                    label='ButtonsTemplate',
+                    text='ButtonsTemplate'
                 ),
-                MessageTemplateAction(
-                    label='Confirm template',
-                    text='Confirm template'
+                URITemplateAction(
+                    label='VIDEO1',
+                    uri='影片網址'
                 ),
-                MessageTemplateAction(
-                    label='Carousel template',
-                    text='Carousel template'
-                ),
-                MessageTemplateAction(
-                    label='Image Carousel',
-                    text='Image Carousel'
+                PostbackTemplateAction(
+                    label='postback',
+                    text='postback text',
+                    data='postback1'
                 )
             ]
         )
     )
-        line_bot_api.reply_message(event.reply_token, buttons_template)
+    line_bot_api.reply_message(event.reply_token, buttons_template)
 
 
 if __name__ == "__main__":
