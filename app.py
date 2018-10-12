@@ -73,7 +73,7 @@ def handle_message(event):
     a = result['topScoringIntent']['intent']
     if '找工作' or '時' or '中山大學' in msg:
         s = work(msg)
-    line_bot_api.reply_message(event.reply_token,TextSendMessage(text=s))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=s))
     
     elif event.message.text == "樣板":
         buttons_template = TemplateSendMessage(
