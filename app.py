@@ -101,17 +101,12 @@ def handle_message(event):
                 actions=[
                 DatetimePickerTemplateAction(
                     label="datetime picker date",
-                    data="action=sell&itemid=2&mode=date",
+                    data="偷偷傳回的訊息",
                     mode="date",
                     initial="2013-04-01",
                     min="2011-06-23",
                     max="2017-09-08"
                 ),
-                PostbackTemplateAction(
-                    label='postback還會回傳data參數',
-                    text='postback text',
-                    data='action=buy&itemid=1'
-                    ),
                 MessageTemplateAction(
                     label='message會回傳text文字', text='message text'
                     ),
