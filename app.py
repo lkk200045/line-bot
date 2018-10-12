@@ -73,39 +73,10 @@ def handle_message(event):
     a = result['topScoringIntent']['intent']
     if '找工作' or '時' or '中山大學' in msg:
         s = work(msg)
+    
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=s))
-    
-    elif event.message.text == "樣板":    
-        buttons_template = TemplateSendMessage(
-        alt_text='目錄 template',
-        template=ButtonsTemplate(
-            title='Template-樣板介紹',
-            text='Template分為四種，也就是以下四種：',
-            thumbnail_image_url='圖片網址',
-            actions=[
-                MessageTemplateAction(
-                    label='Buttons Template',
-                    text='Buttons Template'
-                ),
-                MessageTemplateAction(
-                    label='Confirm template',
-                    text='Confirm template'
-                ),
-                MessageTemplateAction(
-                    label='Carousel template',
-                    text='Carousel template'
-                ),
-                MessageTemplateAction(
-                    label='Image Carousel',
-                    text='Image Carousel'
-                )
-            ]
-        )
-    )
-        line_bot_api.reply_message(event.reply_token, buttons_template)
-
 
 if __name__ == "__main__":
     app.run()
