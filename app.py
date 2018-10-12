@@ -75,13 +75,22 @@ def handle_message(event):
         buttons_template_message = TemplateSendMessage(
             alt_text='hi',
             template=ButtonsTemplate(
-                thumbnail_image_url='https://photos.google.com/photo/AF1QipN6ssz4Ewsiik3Ef-R0tzzSOKjlqlf6y4LFLJgf',
+                thumbnail_image_url='https://www.limitlessiq.com/media/catalog/product/cache/1/small_image/200x200/9df78eab33525d08d6e5fb8d27136e95/z/0/z01.jpg',
                 title='請選擇所在城市',
                 text='歡迎光臨',
                 actions=[
                 MessageTemplateAction(
                     label='高雄', text='高雄'
                     ),
+                MessageTemplateAction(
+                    label='台北', text='台北'
+                    ),
+                MessageTemplateAction(
+                    label='台南', text='台南'
+                    ),
+                MessageTemplateAction(
+                    label='台中', text='台中'
+                    )
                 ]
             )
         )
@@ -100,7 +109,7 @@ def handle_message(event):
                     text='幫忙外送飲料，詳細地點高雄中山大學，時薪200',
                     actions=[
                     MessageTemplateAction(
-                        label='message1',
+                        label='中山跑腿小弟',
                         text='中山跑腿小弟'
                     )
                 ]
@@ -111,11 +120,22 @@ def handle_message(event):
                     text='幫忙打掃宿舍，詳細地點鹽埕區五福四路100號，時薪200',
                     actions=[
                     MessageTemplateAction(
-                        label='message2',
+                        label='鹽程幫忙掃地',
                         text='鹽程幫忙掃地'
                     )
                 ]
-            )
+            ),
+             CarouselColumn(
+                    thumbnail_image_url='https://static.juksy.com/files/articles/68605/5a35353b09a3d.jpg',
+                    title='正妹求搬家',
+                    text='幫忙搬家，詳細地點鹽埕區五福四路1號，友情無價，陪你吃頓飯',
+                    actions=[
+                    MessageTemplateAction(
+                        label='正妹求搬家',
+                        text='正妹求搬家'
+                    )
+                ]
+            ),
         ]
         )
     )
