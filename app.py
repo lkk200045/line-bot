@@ -12,6 +12,7 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
     ImageSendMessage,LocationMessage,TemplateSendMessage, ButtonsTemplate, URITemplateAction,
+    PostbackTemplateAction, MessageTemplateAction
 )
 
 
@@ -109,32 +110,33 @@ def handle_message(event):
             event.reply_token,
             buttons_template_message)
 
-    elif event.message.text == "測試":
-        Image_Carousel = TemplateSendMessage(
-            alt_text='目錄 template',
-            template=ImageCarouselTemplate(
-                columns=[
-                ImageCarouselColumn(
-                    image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
-                    action=PostbackTemplateAction(
-                        label='postback1',
-                        text='postback text1',
-                        data='action=buy&itemid=1'
-                        )
-                    ),
-                ImageCarouselColumn(
-                    image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
-                    action=PostbackTemplateAction(
-                        label='postback2',
-                        text='postback text2',
-                        data='action=buy&itemid=2'
-                        )
-                    )
-                ]
+    elif event.message.text =='測試'
+    button_template_message =ButtonsTemplate(
+        thumbnail_image_url="https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg",
+        title='Menu', 
+        text='Please select',
+        ratio="1.51:1",
+        image_size="cover",
+        actions=[
+        PostbackTemplateAction(
+            label='postback還會回傳data參數', 
+            text='postback text',
+            data='action=buy&itemid=1'
+            ),
+        MessageTemplateAction(
+            label='message會回傳text文字', text='message text'
+            ),
+        URITemplateAction(
+            label='uri可回傳網址', uri='http://www.xiaosean.website/'
             )
-        )
-        line_bot_api.reply_message(event.reply_token,Image_Carousel)
-
+        ]
+    )
+        line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
+        try:
+            line_bot_api.push_message(to, TemplateSendMessage(alt_text="Template Example", template=button_template_message))
+        except LineBotApiError as e:
+        # error handle
+        raise e
 
 if __name__ == "__main__":
     app.run()
