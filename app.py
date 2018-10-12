@@ -70,49 +70,17 @@ def work(message):
 def handle_message(event):
     msg = event.message.text
     msg = msg.encode('utf-8')
-    if event.message.text == "文字":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
-    elif event.message.text == '找工作':
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入時間'))
-    elif event.message.text == "按鈕":
-        buttons_template_message = TemplateSendMessage(
-            alt_text="Please tell me where you are",
-            template=ButtonsTemplate(
-                text="Please tell me where you are",
-                actions=[
-                URITemplateAction(
-                    label="Send my location",
-                    uri="line://nv/location"
-                    )
-                ]
-            )
-            )
-        line_bot_api.reply_message(
-            event.reply_token,
-            buttons_template_message)
-    
-    elif event.message.text == "樣本":
+
+    if event.message.text == "找工作":
         buttons_template_message = TemplateSendMessage(
             alt_text='hi',
             template=ButtonsTemplate(
                 thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
-                title='hi',
-                text='aa',
+                title='請選擇所在城市',
                 actions=[
-                DatetimePickerTemplateAction(
-                    label="datetime picker date",
-                    data="偷偷傳回的訊息",
-                    mode="date",
-                    initial="2013-04-01",
-                    min="2011-06-23",
-                    max="2017-09-08"
-                ),
                 MessageTemplateAction(
-                    label='message會回傳text文字', text='message text'
+                    label='高雄', text='高雄'
                     ),
-                URITemplateAction(
-                    label='uri可回傳網址', uri='http://www.xiaosean.website/'
-                    )
                 ]
             )
         )
