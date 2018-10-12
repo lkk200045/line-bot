@@ -109,6 +109,32 @@ def handle_message(event):
             event.reply_token,
             buttons_template_message)
 
+    elif event.message.text == "測試":
+        Image_Carousel = TemplateSendMessage(
+            alt_text='目錄 template',
+            template=ImageCarouselTemplate(
+                columns=[
+                ImageCarouselColumn(
+                    image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
+                    action=PostbackTemplateAction(
+                        label='postback1',
+                        text='postback text1',
+                        data='action=buy&itemid=1'
+                        )
+                    ),
+                ImageCarouselColumn(
+                    image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
+                    action=PostbackTemplateAction(
+                        label='postback2',
+                        text='postback text2',
+                        data='action=buy&itemid=2'
+                        )
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token,Image_Carousel)
+
 
 if __name__ == "__main__":
     app.run()
