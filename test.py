@@ -10,7 +10,9 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,StickerSendMessage
+    MessageEvent, TextMessage, TextSendMessage,
+    ImageSendMessage,LocationMessage,TemplateSendMessage, ButtonsTemplate, URITemplateAction,
+    PostbackTemplateAction, MessageTemplateAction
 )
 
 
@@ -73,31 +75,97 @@ def handle_message(event):
     elif event.message.text == '找工作':
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入時間'))
     elif event.message.text == "按鈕":
-        buttons_template = TemplateSendMessage(
-        alt_text='Buttons Template',
-        template=ButtonsTemplate(
-            title='這是ButtonsTemplate',
-            text='ButtonsTemplate可以傳送text,uri',
-            thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
-            actions=[
-                MessageTemplateAction(
-                    label='ButtonsTemplate',
-                    text='ButtonsTemplate'
-                ),
+        buttons_template_message = TemplateSendMessage(
+            alt_text="Please tell me where you are",
+            template=ButtonsTemplate(
+                text="Please tell me where you are",
+                actions=[
                 URITemplateAction(
-                    label='VIDEO1',
-                    uri='https://www.youtube.com/watch?v=pHEOgcuV0Ok'
-                ),
+                    label="Send my location",
+                    uri="line://nv/location"
+                    )
+                ]
+            )
+            )
+        line_bot_api.reply_message(
+            event.reply_token,
+            buttons_template_message)
+    
+    elif event.message.text == "樣本":
+        buttons_template_message = TemplateSendMessage(
+            alt_text='hi',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
+                title='hi',
+                text='aa',
+                actions=[
                 PostbackTemplateAction(
-                    label='postback',
+                    label='postback還會回傳data參數',
                     text='postback text',
-                    data='postback1'
-                )
-            ]
+                    data='action=buy&itemid=1'
+                    ),
+                MessageTemplateAction(
+                    label='message會回傳text文字', text='message text'
+                    ),
+                URITemplateAction(
+                    label='uri可回傳網址', uri='http://www.xiaosean.website/'
+                    )
+                ]
+            )
         )
+        line_bot_api.reply_message(
+            event.reply_token,
+            buttons_template_message)
+
+    elif event.message.text == "Carousel template":
+        print("Carousel template")       
+        Carousel_template = TemplateSendMessage(
+        alt_text='目錄 template',
+        template=CarouselTemplate(
+        columns=[
+            CarouselColumn(
+                thumbnail_image_url='圖片網址',
+                title='this is menu1',
+                text='description1',
+                actions=[
+                    PostbackTemplateAction(
+                        label='postback1',
+                        text='postback text1',
+                        data='action=buy&itemid=1'
+                    ),
+                    MessageTemplateAction(
+                        label='message1',
+                        text='message text1'
+                    ),
+                    URITemplateAction(
+                        label='uri1',
+                        uri='網址'
+                    )
+                ]
+            ),
+            CarouselColumn(
+                thumbnail_image_url='圖片網址',
+                title='this is menu2',
+                text='description2',
+                actions=[
+                    PostbackTemplateAction(
+                        label='postback2',
+                        text='postback text2',
+                        data='action=buy&itemid=2'
+                    ),
+                    MessageTemplateAction(
+                        label='message2',
+                        text='message text2'
+                    ),
+                    URITemplateAction(
+                        label='連結2',
+                        uri='網址'
+                    )
+                ]
+            )
+        ]
     )
-        line_bot_api.reply_message(event.reply_token, buttons_template)
-
-
+    )
+        line_bot_api.reply_message(event.reply_token,Carousel_template)
 if __name__ == "__main__":
     app.run()
