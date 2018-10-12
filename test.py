@@ -12,7 +12,7 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
     ImageSendMessage,LocationMessage,TemplateSendMessage, ButtonsTemplate, URITemplateAction,
-    PostbackTemplateAction, MessageTemplateAction, CarouselTemplate, CarouselColumn
+    PostbackTemplateAction, MessageTemplateAction, CarouselTemplate, CarouselColumn,DatetimePickerTemplateAction
 )
 
 
@@ -99,6 +99,14 @@ def handle_message(event):
                 title='hi',
                 text='aa',
                 actions=[
+                DatetimePickerTemplateAction(
+                    label="datetime picker date",
+                    data="action=sell&itemid=2&mode=date",
+                    mode="date",
+                    initial="2013-04-01",
+                    min="2011-06-23",
+                    max="2017-09-08"
+                ),
                 PostbackTemplateAction(
                     label='postback還會回傳data參數',
                     text='postback text',
