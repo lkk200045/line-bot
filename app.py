@@ -67,11 +67,10 @@ def work(message):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    params['q'] = msg
-    r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
-    result = r.json()
-    a = result['topScoringIntent']['intent']
-    if '找工作' or '時' or '中山大學' in msg:
+    msg = msg.encode('utf-8')
+    if event.message.text == "文字":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
+    elif '找工作' or '時' or '中山大學' in msg:
         s = work(msg)
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=s))
     
