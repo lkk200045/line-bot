@@ -12,7 +12,7 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
     ImageSendMessage,LocationMessage,TemplateSendMessage, ButtonsTemplate, URITemplateAction,
-    PostbackTemplateAction, MessageTemplateAction, CarouselTemplate, CarouselColumn,DatetimePickerTemplateAction
+    PostbackTemplateAction, MessageTemplateAction, CarouselTemplate, CarouselColumn, ConfirmTemplate
 )
 
 
@@ -75,12 +75,22 @@ def handle_message(event):
         buttons_template_message = TemplateSendMessage(
             alt_text='hi',
             template=ButtonsTemplate(
-                thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
+                thumbnail_image_url='https://www.limitlessiq.com/media/catalog/product/cache/1/small_image/200x200/9df78eab33525d08d6e5fb8d27136e95/z/0/z01.jpg',
                 title='請選擇所在城市',
+                text='歡迎光臨',
                 actions=[
                 MessageTemplateAction(
                     label='高雄', text='高雄'
                     ),
+                MessageTemplateAction(
+                    label='台北', text='台北'
+                    ),
+                MessageTemplateAction(
+                    label='台南', text='台南'
+                    ),
+                MessageTemplateAction(
+                    label='台中', text='台中'
+                    )
                 ]
             )
         )
@@ -88,55 +98,70 @@ def handle_message(event):
             event.reply_token,
             buttons_template_message)
    
-    elif event.message.text == "message text":
+    elif event.message.text == "高雄":
         Carousel_template = TemplateSendMessage(
             alt_text='Carousel template',
             template=CarouselTemplate(
                 columns=[
                 CarouselColumn(
                     thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
-                    title='this is menu1',
-                    text='description1',
+                    title='中山跑腿小弟',
+                    text='幫忙外送飲料，詳細地點高雄中山大學，時薪200',
                     actions=[
-                    PostbackTemplateAction(
-                        label='postback1',
-                        text='postback text1',
-                        data='action=buy&itemid=1'
-                    ),
                     MessageTemplateAction(
-                        label='message1',
-                        text='message text1'
-                    ),
-                    URITemplateAction(
-                        label='uri1',
-                        uri='http://www.xiaosean.website/'
+                        label='中山跑腿小弟',
+                        text='中山跑腿小弟'
                     )
                 ]
             ),
                 CarouselColumn(
                     thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
-                    title='this is menu2',
-                    text='description2',
+                    title='鹽程幫忙掃地',
+                    text='幫忙打掃宿舍，詳細地點鹽埕區五福四路100號，時薪200',
                     actions=[
-                    PostbackTemplateAction(
-                        label='postback2',
-                        text='postback text2',
-                        data='action=buy&itemid=2'
-                    ),
                     MessageTemplateAction(
-                        label='message2',
-                        text='message text2'
-                    ),
-                    URITemplateAction(
-                        label='連結2',
-                        uri='http://www.xiaosean.website/'
+                        label='鹽程幫忙掃地',
+                        text='鹽程幫忙掃地'
                     )
                 ]
-            )
+            ),
+             CarouselColumn(
+                    thumbnail_image_url='https://static.juksy.com/files/articles/68605/5a35353b09a3d.jpg',
+                    title='正妹求搬家',
+                    text='幫忙搬家，詳細地點鹽埕區五福四路1號，友情無價，陪你吃頓飯',
+                    actions=[
+                    MessageTemplateAction(
+                        label='正妹求搬家',
+                        text='正妹求搬家'
+                    )
+                ]
+            ),
         ]
         )
     )
-        line_bot_api.reply_message(event.reply_token,Carousel_template)      
+        line_bot_api.reply_message(event.reply_token,Carousel_template) 
+
+    elif event.message.text == "正妹求搬家" :
+        Confirm_template = TemplateSendMessage(
+        alt_text='目錄 template',
+        template=ConfirmTemplate(
+            title='這是ConfirmTemplate',
+            text='這就是ConfirmTemplate,用於兩種按鈕選擇',
+            actions=[                              
+                PostbackTemplateAction(
+                    label='Y',
+                    text='Y',
+                    data='action=buy&itemid=1'
+                ),
+                MessageTemplateAction(
+                    label='N',
+                    text='N'
+                )
+            ]
+        )
+    )
+        line_bot_api.reply_message(event.reply_token,Confirm_template)
+
         
 if __name__ == "__main__":
     app.run()
