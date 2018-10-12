@@ -75,7 +75,7 @@ def handle_message(event):
         s = work(msg)
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=s))
     
-    elif msg == "樣板":
+    elif msg == 'a':
         buttons_template = TemplateSendMessage(
         alt_text='目錄 template',
         template=ButtonsTemplate(
