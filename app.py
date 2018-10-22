@@ -168,6 +168,78 @@ def handle_message(event):
         
     elif event.message.text == '學生兼差':
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入姓名'))
+
+    elif event.message.text == "我要找人才":
+        buttons_template_message = TemplateSendMessage(
+            alt_text='hi',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://www.limitlessiq.com/media/catalog/product/cache/1/small_image/200x200/9df78eab33525d08d6e5fb8d27136e95/z/0/z01.jpg',
+                title='請選擇所在城市',
+                text='歡迎光臨',
+                actions=[
+                MessageTemplateAction(
+                    label='高雄人才', text='高雄人才'
+                    ),
+                MessageTemplateAction(
+                    label='台北人才', text='台北人才'
+                    ),
+                MessageTemplateAction(
+                    label='台南人才', text='台南人才'
+                    ),
+                MessageTemplateAction(
+                    label='台中人才', text='台中人才'
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(
+            event.reply_token,
+            buttons_template_message)
+
+    elif event.message.text == "高雄人才":
+        Carousel_template = TemplateSendMessage(
+            alt_text='Carousel template',
+            template=CarouselTemplate(
+                columns=[
+                CarouselColumn(
+                    thumbnail_image_url='https://cc.tvbs.com.tw/img/upload/2018/08/26/20180826221834-d60f8573.jpg',
+                    title='中山劉德華',
+                    text='搬家界的第一把交椅',
+                    actions=[
+                    MessageTemplateAction(
+                        label='中山劉德華',
+                        text='中山劉德華'
+                    )
+                ]
+            ),
+                CarouselColumn(
+                    thumbnail_image_url='https://cw1.tw/CW/images/article/C1418099648229.jpg',
+                    title='高雄金城武',
+                    text='外賣界的四大天王',
+                    actions=[
+                    MessageTemplateAction(
+                        label='高雄金城武',
+                        text='高雄金城武'
+                    )
+                ]
+            ),
+             CarouselColumn(
+                    thumbnail_image_url='https://img5.cna.com.tw/www/WebPhotos/1024/20171213/10178499.jpg',
+                    title='台南林志玲',
+                    text='帶小孩的最美名模',
+                    actions=[
+                    MessageTemplateAction(
+                        label='台南林志玲',
+                        text='台南林志玲'
+                    )
+                ]
+            ),
+        ]
+        )
+    )
+        line_bot_api.reply_message(event.reply_token,Carousel_template) 
+
+
         
 if __name__ == "__main__":
     app.run()
