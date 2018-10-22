@@ -132,20 +132,20 @@ def handle_message(event):
                 text='您選的資料為正妹求搬家',
                 actions=[                              
                 PostbackTemplateAction(
-                    label='Y',
-                    text='Y',
+                    label='是',
+                    text='是',
                     data='action=buy&itemid=1'
                     ),
                 MessageTemplateAction(
-                    label='N',
-                    text='N'
+                    label='否',
+                    text='否'
                     )
                 ]
             )
     )
         line_bot_api.reply_message(event.reply_token,Confirm_template)
 
-    elif event.message.text == 'Y':
+    elif event.message.text == '是':
         buttons_template_message = TemplateSendMessage(
             alt_text='hi',
             template=ButtonsTemplate(
@@ -196,7 +196,30 @@ def handle_message(event):
             event.reply_token,
             buttons_template_message)
 
-    elif event.message.text == "高雄人才":
+    
+    elif event.message.text == '高雄人才':
+        buttons_template_message = TemplateSendMessage(
+            alt_text='hi',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://www.limitlessiq.com/media/catalog/product/cache/1/small_image/200x200/9df78eab33525d08d6e5fb8d27136e95/z/0/z01.jpg',
+                title='請問有指定專員嗎?',
+                text='您好',
+                actions=[
+                MessageTemplateAction(
+                    label='有', text='有'
+                    ),
+                MessageTemplateAction(
+                    label='沒有', text='沒有'
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(
+            event.reply_token,
+            buttons_template_message)
+
+
+    elif event.message.text == "有": 
         Carousel_template = TemplateSendMessage(
             alt_text='Carousel template',
             template=CarouselTemplate(
@@ -224,7 +247,7 @@ def handle_message(event):
                 ]
             ),
              CarouselColumn(
-                    thumbnail_image_url='https://img5.cna.com.tw/www/WebPhotos/1024/20171213/10178499.jpg',
+                    thumbnail_image_url='https://fs.mingpao.com/pns/20171215/s00092/5e98a17b98b881b7730d0d6b1e52a14b.jpg',
                     title='台南林志玲',
                     text='帶小孩的最美名模',
                     actions=[
@@ -237,7 +260,54 @@ def handle_message(event):
         ]
         )
     )
-        line_bot_api.reply_message(event.reply_token,Carousel_template) 
+        line_bot_api.reply_message(event.reply_token,Carousel_template)
+
+    elif event.message.text == "台南林志玲":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入地址及相關資訊'))
+
+
+    elif event.message.text == "沒有": 
+        Carousel_template = TemplateSendMessage(
+            alt_text='Carousel template',
+            template=CarouselTemplate(
+                columns=[
+                CarouselColumn(
+                    thumbnail_image_url='https://cc.tvbs.com.tw/img/upload/2018/08/26/20180826221834-d60f8573.jpg',
+                    title='中山劉德華',
+                    text='搬家界的第一把交椅',
+                    actions=[
+                    MessageTemplateAction(
+                        label='中山劉德華',
+                        text='中山劉德華'
+                    )
+                ]
+            ),
+                CarouselColumn(
+                    thumbnail_image_url='https://cw1.tw/CW/images/article/C1418099648229.jpg',
+                    title='高雄金城武',
+                    text='外賣界的四大天王',
+                    actions=[
+                    MessageTemplateAction(
+                        label='高雄金城武',
+                        text='高雄金城武'
+                    )
+                ]
+            ),
+             CarouselColumn(
+                    thumbnail_image_url='https://fs.mingpao.com/pns/20171215/s00092/5e98a17b98b881b7730d0d6b1e52a14b.jpg',
+                    title='台南林志玲',
+                    text='帶小孩的最美名模',
+                    actions=[
+                    MessageTemplateAction(
+                        label='台南林志玲',
+                        text='台南林志玲'
+                    )
+                ]
+            ),
+        ]
+        )
+    )
+        line_bot_api.reply_message(event.reply_token,Carousel_template)  
 
 
         
