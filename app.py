@@ -54,7 +54,7 @@ def handle_message(event):
     msg = event.message.text
     msg = msg.encode('utf-8')
 
-    if event.message.text == "找工作":
+    if event.message.text == "我要找工作":
         buttons_template_message = TemplateSendMessage(
             alt_text='hi',
             template=ButtonsTemplate(
