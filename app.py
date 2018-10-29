@@ -53,8 +53,6 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     msg = msg.encode('utf-8')
-    with open("products.txt",'w',encoding='utf-8') as f :
-        f.write(msg)
     if event.message.text == "我要找工作":
         buttons_template_message = TemplateSendMessage(
             alt_text='hi',
