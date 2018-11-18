@@ -204,28 +204,7 @@ def handle_message(event):
     elif event.message.text == '0987787587' :
     	line_bot_api.reply_message(event.reply_token,TextSendMessage(text='報名成功 您的序號為001號'))
     elif event.message.text == '謝謝您' :
-    	line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
-    	image_url = "https://i.imgur.com/mB9yDO0.png"
-    	text = "#FFB8D1"
-    	click_link_1 = "https://www.facebook.com/ntustcc"
-    	try:
-    		line_bot_api.push_message(to, ImagemapSendMessage(base_url=image_url,
-                                                      alt_text="ImageMap Example",
-                                                      base_size=BaseSize(height=1040, width=1040),
-                                                      actions=[
-                                                            MessageImagemapAction(
-                                                                text=text,
-                                                                area=ImagemapArea(
-                                                                    x=0, y=0, width=1040/5, height=1040
-                                                                )
-                                                            ),
-                                                            URIImagemapAction(
-                                                                link_uri=click_link_1,
-                                                                area=ImagemapArea(
-                                                                    x=int(1040*0.8), y=0, width=int(1040/5), height=1040
-                                                                )
-                                                            )
-                                                        ]))
+ 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='不會喔~'))
 
 
     elif event.message.text == "我要找人才":
