@@ -118,6 +118,17 @@ def handle_message(event):
                     )
                 ]
             ),
+             CarouselColumn(
+                    thumbnail_image_url='https://static.juksy.com/files/articles/68605/5a35353b09a3d.jpg',
+                    title='陳立委造勢晚會',
+                    text='誠徵走路工數名，薪水500含便當',
+                    actions=[
+                    MessageTemplateAction(
+                        label='陳立委造勢晚會',
+                        text='陳立委造勢晚會'
+                    )
+                ]
+            ),
         ]
         )
     )
