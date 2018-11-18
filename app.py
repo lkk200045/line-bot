@@ -342,7 +342,10 @@ def handle_message(event):
         ]
         )
     )
-        line_bot_api.reply_message(event.reply_token,Carousel_template)  
+        line_bot_api.reply_message(event.reply_token,Carousel_template)
+
+    else :
+    	line_bot_api.reply_message(event.reply_token,TextSendMessage(text='不好意思我還在學習'))  
 
 
         
