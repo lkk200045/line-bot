@@ -119,7 +119,7 @@ def handle_message(event):
                 ]
             ),
              CarouselColumn(
-                    thumbnail_image_url='https://static.juksy.com/files/articles/68605/5a35353b09a3d.jpg',
+                    thumbnail_image_url='https://img.appledaily.com.tw/images/ReNews/20181115/640_56aa7f0bc61bca9f99ded16ad5098a54.jpg',
                     title='陳立委造勢晚會',
                     text='誠徵走路工數名，薪水500含便當',
                     actions=[
@@ -160,7 +160,7 @@ def handle_message(event):
             alt_text='目錄 template',
             template=ConfirmTemplate(
                 title='確認',
-                text='陳立委造勢晚會',
+                text='您選的資料為陳立委造勢晚會',
                 actions=[                              
                 PostbackTemplateAction(
                     label='是',
@@ -176,26 +176,26 @@ def handle_message(event):
     )
         line_bot_api.reply_message(event.reply_token,Confirm_template)
 
-    elif event.message.text == '是':
-        buttons_template_message = TemplateSendMessage(
-            alt_text='hi',
-            template=ButtonsTemplate(
-                thumbnail_image_url='https://www.limitlessiq.com/media/catalog/product/cache/1/small_image/200x200/9df78eab33525d08d6e5fb8d27136e95/z/0/z01.jpg',
-                title='請選擇身分',
-                text='您好',
-                actions=[
-                MessageTemplateAction(
-                    label='學生兼差', text='學生兼差'
+    elif event.message.text == "是" :
+        Confirm_template = TemplateSendMessage(
+            alt_text='目錄 template',
+            template=ConfirmTemplate(
+                title='確認',
+                text='請選擇您的身分',
+                actions=[                              
+                PostbackTemplateAction(
+                    label='學生兼差',
+                    text='學生兼差',
+                    data='action=buy&itemid=1'
                     ),
                 MessageTemplateAction(
-                    label='上班族兼差', text='上班族兼差'
+                    label='上班族兼差',
+                    text='上班族兼差'
                     )
                 ]
             )
-        )
-        line_bot_api.reply_message(
-            event.reply_token,
-            buttons_template_message)
+    )
+        line_bot_api.reply_message(event.reply_token,Confirm_template)
         
     elif event.message.text == '學生兼差':
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入姓名'))
