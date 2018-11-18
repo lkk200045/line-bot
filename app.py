@@ -86,7 +86,7 @@ def handle_message(event):
             template=CarouselTemplate(
                 columns=[
                 CarouselColumn(
-                    thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
+                    thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/NSYSU_MS05.JPG/460px-NSYSU_MS05.JPG',
                     title='中山跑腿小弟',
                     text='幫忙外送飲料，詳細地點高雄中山大學，時薪200',
                     actions=[
