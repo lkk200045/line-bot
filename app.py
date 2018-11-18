@@ -18,6 +18,7 @@ from linebot.models import (
 
 
 
+
 app = Flask(__name__)
 
 line_bot_api = LineBotApi('/sjBLgjHsNZhdsV+Xy9pXu7rPIrErYLvvbLfVOEYDyaiH3IEVROEnEYrMkPF+BuGCFjbTu3HSfTSUfVTJz6rLIWluhYeZp7v5FKZa94SF7pkcCPvY7El21pJuki1kpg5gl8QLxtGEfhtSutfmxdgUgdB04t89/1O/w1cDnyilFU=')
@@ -203,8 +204,7 @@ def handle_message(event):
     elif event.message.text == '0987787587' :
     	line_bot_api.reply_message(event.reply_token,TextSendMessage(text='報名成功 您的序號為001號'))
     elif event.message.text == '謝謝您' :
- 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text='不會喔~'))
-
+    	line_bot_api.reply_message(event.reply_token,TextSendMessage(text='不會喔~'))
 
     elif event.message.text == "我要找人才":
         buttons_template_message = TemplateSendMessage(
