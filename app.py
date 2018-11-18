@@ -155,6 +155,27 @@ def handle_message(event):
     )
         line_bot_api.reply_message(event.reply_token,Confirm_template)
 
+    elif event.message.text == "陳立委造勢晚會" :
+        Confirm_template = TemplateSendMessage(
+            alt_text='目錄 template',
+            template=ConfirmTemplate(
+                title='確認',
+                text='陳立委造勢晚會',
+                actions=[                              
+                PostbackTemplateAction(
+                    label='是',
+                    text='是',
+                    data='action=buy&itemid=1'
+                    ),
+                MessageTemplateAction(
+                    label='否',
+                    text='否'
+                    )
+                ]
+            )
+    )
+        line_bot_api.reply_message(event.reply_token,Confirm_template)
+
     elif event.message.text == '是':
         buttons_template_message = TemplateSendMessage(
             alt_text='hi',
@@ -178,6 +199,10 @@ def handle_message(event):
         
     elif event.message.text == '學生兼差':
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入姓名'))
+    elif event.message.text == '韓小魚' :
+    	line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入電話'))
+    elif event.message.text == '0937787587' :
+    	line_bot_api.reply_message(event.reply_token,TextSendMessage(text='報名成功 您的序號為001號'))
 
     elif event.message.text == "我要找人才":
         buttons_template_message = TemplateSendMessage(
