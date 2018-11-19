@@ -206,8 +206,9 @@ def handle_message(event):
     elif event.message.text == '謝謝您' :
     	line_bot_api.reply_message(event.reply_token,TextSendMessage(text='不會喔~'))
     elif event.message.text == '更多工作' :
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='職安監造工程師'))
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='佐丹奴GIORDANO銷售助理-新夢時代'))
+        while True:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text='職安監造工程師'))
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text='佐丹奴GIORDANO銷售助理-新夢時代'))
 
 
     elif event.message.text == "我要找人才":
