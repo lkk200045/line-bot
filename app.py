@@ -289,7 +289,7 @@ def handle_message(event):
 
     elif event.message.text == "台南林志玲":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入工作資訊'))
-    elif event.message.text == "失戀求人陪":
+    elif event.message.text == "幫忙接小孩":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入地點'))
     elif event.message.text == "中山大學":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入姓名'))
