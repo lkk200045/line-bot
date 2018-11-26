@@ -72,7 +72,7 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     msg = msg.encode('utf-8')
-    luis(msg)
+    a = luis(msg)
     if a =='告白':
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:告白 回應:我不愛妳'))
     elif a=='聊天':
