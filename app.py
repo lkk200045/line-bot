@@ -308,7 +308,7 @@ def handle_message(event):
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
 
-    elif event.message.text == "台南林志玲" or event.message.text == "沒有":
+    elif event.message.text == "台南林志玲" or event.message.text == "高雄金城武"or event.message.text == "中山劉德華" or event.message.text == "沒有":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入工作資訊'))
     elif event.message.text == "幫忙接小孩":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入地點'))
