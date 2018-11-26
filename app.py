@@ -186,7 +186,7 @@ def handle_message(event):
     )
         line_bot_api.reply_message(event.reply_token,Confirm_template)
         
-    elif event.message.text == '學生兼差':
+    elif event.message.text == '學生兼差' or event.message.text == '上班族兼差':
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入姓名'))
     elif event.message.text == '黃小明' :
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入電話'))
@@ -222,7 +222,7 @@ def handle_message(event):
             buttons_template_message)
 
     
-    elif event.message.text == '高雄人才':
+    elif event.message.text == '高雄人才'or event.message.text == '台北人才'or event.message.text == '台南人才'or event.message.text == '台中人才':
         buttons_template_message = TemplateSendMessage(
             alt_text='hi',
             template=ButtonsTemplate(
