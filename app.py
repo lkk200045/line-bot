@@ -165,7 +165,7 @@ def handle_message(event):
     )
         line_bot_api.reply_message(event.reply_token,Confirm_template)
 
-        elif event.message.text == "中山跑腿小弟" :
+    elif event.message.text == "中山跑腿小弟" :
         Confirm_template = TemplateSendMessage(
             alt_text='目錄 template',
             template=ConfirmTemplate(
