@@ -80,7 +80,7 @@ def handle_message(event):
             event.reply_token,
             buttons_template_message)
    
-    elif event.message.text == "高雄":
+    elif event.message.text == "高雄" or event.message.text == "台北" or event.message.text == "台南" or event.message.text == "台中":
         Carousel_template = TemplateSendMessage(
             alt_text='Carousel template',
             template=CarouselTemplate(
@@ -144,12 +144,33 @@ def handle_message(event):
     )
         line_bot_api.reply_message(event.reply_token,Confirm_template)
 
-    elif event.message.text == "陳立委造勢晚會" :
+    elif event.message.text == "鹽程幫忙掃地" :
         Confirm_template = TemplateSendMessage(
             alt_text='目錄 template',
             template=ConfirmTemplate(
                 title='確認',
-                text='您選的資料為陳立委造勢晚會',
+                text='您選的資料為鹽程幫忙掃地',
+                actions=[                              
+                PostbackTemplateAction(
+                    label='是',
+                    text='是',
+                    data='action=buy&itemid=1'
+                    ),
+                MessageTemplateAction(
+                    label='否',
+                    text='否'
+                    )
+                ]
+            )
+    )
+        line_bot_api.reply_message(event.reply_token,Confirm_template)
+
+        elif event.message.text == "中山跑腿小弟" :
+        Confirm_template = TemplateSendMessage(
+            alt_text='目錄 template',
+            template=ConfirmTemplate(
+                title='確認',
+                text='您選的資料為中山跑腿小弟',
                 actions=[                              
                 PostbackTemplateAction(
                     label='是',
@@ -287,7 +308,7 @@ def handle_message(event):
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
 
-    elif event.message.text == "台南林志玲":
+    elif event.message.text == "台南林志玲" or event.message.text == "沒有":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入工作資訊'))
     elif event.message.text == "幫忙接小孩":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入地點'))
@@ -299,51 +320,6 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='完成報名'))
     elif event.message.text == "客訴服務":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='您好，請輸入您的電話，我們將有專人為您服務。'))
-
-
-    elif event.message.text == "沒有": 
-        Carousel_template = TemplateSendMessage(
-            alt_text='Carousel template',
-            template=CarouselTemplate(
-                columns=[
-                CarouselColumn(
-                    thumbnail_image_url='https://cc.tvbs.com.tw/img/upload/2018/08/26/20180826221834-d60f8573.jpg',
-                    title='中山劉德華',
-                    text='搬家界的第一把交椅',
-                    actions=[
-                    MessageTemplateAction(
-                        label='中山劉德華',
-                        text='中山劉德華'
-                    )
-                ]
-            ),
-                CarouselColumn(
-                    thumbnail_image_url='https://cw1.tw/CW/images/article/C1418099648229.jpg',
-                    title='高雄金城武',
-                    text='外賣界的四大天王',
-                    actions=[
-                    MessageTemplateAction(
-                        label='高雄金城武',
-                        text='高雄金城武'
-                    )
-                ]
-            ),
-             CarouselColumn(
-                    thumbnail_image_url='https://fs.mingpao.com/pns/20171215/s00092/5e98a17b98b881b7730d0d6b1e52a14b.jpg',
-                    title='台南林志玲',
-                    text='帶小孩的最美名模',
-                    actions=[
-                    MessageTemplateAction(
-                        label='台南林志玲',
-                        text='台南林志玲'
-                    )
-                ]
-            ),
-        ]
-        )
-    )
-        line_bot_api.reply_message(event.reply_token,Carousel_template)
-
     else :
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='不好意思我還在學習'))  
 
