@@ -288,7 +288,17 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,Carousel_template)
 
     elif event.message.text == "台南林志玲":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入地址及相關資訊'))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入工作資訊'))
+    elif event.message.text == "失戀求人陪":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入地點'))
+    elif event.message.text == "中山大學":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入姓名'))
+    elif event.message.text == "阿伯":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入電話'))
+    elif event.message.text == "0978787587":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='完成報名'))
+    elif event.message.text == "客訴服務":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='您好，請輸入您的電話，我們將有專人為您服務。'))
 
 
     elif event.message.text == "沒有": 
