@@ -118,17 +118,6 @@ def handle_message(event):
                     )
                 ]
             ),
-             CarouselColumn(
-                    thumbnail_image_url='https://img.appledaily.com.tw/images/ReNews/20181115/640_56aa7f0bc61bca9f99ded16ad5098a54.jpg',
-                    title='陳立委造勢晚會',
-                    text='誠徵走路工數名，薪水500含便當',
-                    actions=[
-                    MessageTemplateAction(
-                        label='陳立委造勢晚會',
-                        text='陳立委造勢晚會'
-                    )
-                ]
-            ),
         ]
         )
     )
@@ -199,18 +188,12 @@ def handle_message(event):
         
     elif event.message.text == '學生兼差':
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入姓名'))
-    elif event.message.text == '韓小魚' :
+    elif event.message.text == '黃小明' :
     	line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入電話'))
     elif event.message.text == '0987787587' :
     	line_bot_api.reply_message(event.reply_token,TextSendMessage(text='報名成功 您的序號為001號'))
     elif event.message.text == '謝謝您' :
     	line_bot_api.reply_message(event.reply_token,TextSendMessage(text='不會喔~'))
-    elif event.message.text == '更多工作' :
-        while True:
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text='職安監造工程師'))
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text='佐丹奴GIORDANO銷售助理-新夢時代'))
-
-
     elif event.message.text == "我要找人才":
         buttons_template_message = TemplateSendMessage(
             alt_text='hi',
