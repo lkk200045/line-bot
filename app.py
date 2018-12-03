@@ -60,6 +60,18 @@ def luis(query):
     elif query == "中山跑腿小弟" :
         a ='中山跑腿小弟'
         return a
+    elif query == "是" :
+        a ='是'
+        return a
+    elif query == "否" :
+        a ='否'
+        return a
+    elif query == '學生兼差' :
+        a ='學生兼差'
+        return a
+    elif query == '上班族兼差' :
+        a ='上班族兼差'
+        return a
     else :
         r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
         result = r.json()
@@ -227,7 +239,48 @@ def handle_message(event):
             )
     )
         line_bot_api.reply_message(event.reply_token,Confirm_template)
-
+    elif a == "是" :
+        Confirm_template = TemplateSendMessage(
+            alt_text='目錄 template',
+            template=ConfirmTemplate(
+                title='確認',
+                text='請選擇您的身分',
+                actions=[                              
+                PostbackTemplateAction(
+                    label='學生兼差',
+                    text='學生兼差',
+                    data='action=buy&itemid=1'
+                    ),
+                MessageTemplateAction(
+                    label='上班族兼差',
+                    text='上班族兼差'
+                    )
+                ]
+            )
+    )
+        line_bot_api.reply_message(event.reply_token,Confirm_template)
+    elif a == "否" :
+        Confirm_template = TemplateSendMessage(
+            alt_text='目錄 template',
+            template=ConfirmTemplate(
+                title='確認',
+                text='請選擇您的身分',
+                actions=[                              
+                PostbackTemplateAction(
+                    label='學生兼差',
+                    text='學生兼差',
+                    data='action=buy&itemid=1'
+                    ),
+                MessageTemplateAction(
+                    label='上班族兼差',
+                    text='上班族兼差'
+                    )
+                ]
+            )
+    )
+        line_bot_api.reply_message(event.reply_token,Confirm_template)
+    elif a == '學生兼差' or a == '上班族兼差':
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入姓名'))
     else :
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:不明 回應:可以請你換句話說嗎?'))
        
