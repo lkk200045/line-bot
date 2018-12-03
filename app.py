@@ -44,7 +44,6 @@ headers = {
 }
 
 def luis(query):
-    query = input("請輸入語句:")
     params['q'] = query
     if query == "我要找工作":
         a = 1
