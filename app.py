@@ -45,11 +45,11 @@ headers = {
 
 def luis(query):
     params['q'] = query
-    r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
-    result = r.json()
     if query == "我要找工作":
         a ='我要找工作'
     else:
+        r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
+        result = r.json()
         a = result['topScoringIntent']['intent']
     return a
 
