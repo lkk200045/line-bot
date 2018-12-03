@@ -48,7 +48,7 @@ def luis(query):
     if query == "我要找工作":
         a ='我要找工作'
         return a
-    elif a == "高雄" :
+    elif query == "高雄" :
         a ='高雄'
         return a
     else :
