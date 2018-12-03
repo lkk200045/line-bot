@@ -48,8 +48,11 @@ def luis(query):
     if query == "我要找工作":
         a ='我要找工作'
         return a
-    elif a == "高雄" or a == "台北" or a == "台南" or a == "台中":
+    elif a == "高雄" :
         a ='高雄'
+        return a
+    elif a == "台北" :
+        a ='台北'
         return a
     else :
         r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
@@ -117,7 +120,7 @@ def handle_message(event):
             event.reply_token,
             buttons_template_message)
 
-    elif a == "高雄" or a == "台北" or a == "台南" or a == "台中":
+    elif a == "高雄" :
         Carousel_template = TemplateSendMessage(
             alt_text='Carousel template',
             template=CarouselTemplate(
