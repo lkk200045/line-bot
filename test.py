@@ -29,4 +29,9 @@ def user_input():
 #主程式
 if __name__ == "__main__":
     a =user_input()
-    print(a)
+    if a =='告白':
+        print('我愛你')
+    elif a=='詢問':
+        print('詢問')
+    elif a=='我要找工作':
+        print('我要找工作')

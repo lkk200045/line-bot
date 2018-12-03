@@ -46,12 +46,13 @@ headers = {
 def luis(query):
     params['q'] = query
     if query == "我要找工作":
-        a = 1
+        a ='我要找工作'
+        return a
     else :
         r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
         result = r.json()
         a = result['topScoringIntent']['intent']
-    return a     
+        return a     
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -88,7 +89,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:誇獎 回應:我會不好意思耶'))
     elif a=='問候':
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:問候 回應:你好喔'))
-    elif a==1 :
+    elif a=='我要找工作' :
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='我要找工作'))
     else :
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:不明 回應:可以請你換句話說嗎?'))
