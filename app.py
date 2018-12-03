@@ -51,6 +51,15 @@ def luis(query):
     elif query == "高雄" :
         a ='高雄'
         return a
+    elif query == "正妹求搬家" :
+        a ='正妹求搬家'
+        return a
+    elif query == "鹽程幫忙掃地" :
+        a ='鹽程幫忙掃地'
+        return a
+    elif query == "中山跑腿小弟" :
+        a ='中山跑腿小弟'
+        return a
     else :
         r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
         result = r.json()
@@ -116,7 +125,6 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             buttons_template_message)
-
     elif a == "高雄" :
         Carousel_template = TemplateSendMessage(
             alt_text='Carousel template',
@@ -159,6 +167,67 @@ def handle_message(event):
         )
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
+    elif a == "正妹求搬家" :
+        Confirm_template = TemplateSendMessage(
+            alt_text='目錄 template',
+            template=ConfirmTemplate(
+                title='確認',
+                text='您選的資料為正妹求搬家',
+                actions=[                              
+                PostbackTemplateAction(
+                    label='是',
+                    text='是',
+                    data='action=buy&itemid=1'
+                    ),
+                MessageTemplateAction(
+                    label='否',
+                    text='否'
+                    )
+                ]
+            )
+    )
+        line_bot_api.reply_message(event.reply_token,Confirm_template)
+    elif a == "鹽程幫忙掃地" :
+        Confirm_template = TemplateSendMessage(
+            alt_text='目錄 template',
+            template=ConfirmTemplate(
+                title='確認',
+                text='您選的資料為鹽程幫忙掃地',
+                actions=[                              
+                PostbackTemplateAction(
+                    label='是',
+                    text='是',
+                    data='action=buy&itemid=1'
+                    ),
+                MessageTemplateAction(
+                    label='否',
+                    text='否'
+                    )
+                ]
+            )
+    )
+        line_bot_api.reply_message(event.reply_token,Confirm_template)
+    elif a == "中山跑腿小弟" :
+        Confirm_template = TemplateSendMessage(
+            alt_text='目錄 template',
+            template=ConfirmTemplate(
+                title='確認',
+                text='您選的資料為中山跑腿小弟',
+                actions=[                              
+                PostbackTemplateAction(
+                    label='是',
+                    text='是',
+                    data='action=buy&itemid=1'
+                    ),
+                MessageTemplateAction(
+                    label='否',
+                    text='否'
+                    )
+                ]
+            )
+    )
+        line_bot_api.reply_message(event.reply_token,Confirm_template)
+
     else :
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:不明 回應:可以請你換句話說嗎?'))
        
