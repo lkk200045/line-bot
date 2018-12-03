@@ -72,6 +72,12 @@ def luis(query):
     elif query == '上班族兼差' :
         a ='上班族兼差'
         return a
+    elif query == '小明' :
+        a ='小明'
+        return a
+    elif query == '0987787587' :
+        a ='0987787587'
+        return a
     else :
         r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
         result = r.json()
@@ -281,6 +287,10 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,Confirm_template)
     elif a == '學生兼差' or a == '上班族兼差':
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入姓名'))
+    elif a == '小明' :
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入電話'))
+    elif a == '0987787587' :
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='報名成功 您的序號為001號'))
     else :
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:不明 回應:可以請你換句話說嗎?'))
        
