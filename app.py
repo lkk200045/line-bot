@@ -201,12 +201,12 @@ def handle_message(event):
             ),
                 CarouselColumn(
                     thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
-                    title='鹽程幫忙掃地',
-                    text='幫忙打掃宿舍，詳細地點鹽埕區五福四路100號，時薪200',
+                    title='接小孩',
+                    text='幫忙接小孩，詳細地點鹽埕區五福四路100號，時薪200',
                     actions=[
                     MessageTemplateAction(
-                        label='鹽程幫忙掃地',
-                        text='鹽程幫忙掃地'
+                        label='接小孩',
+                        text='接小孩'
                     )
                 ]
             ),
