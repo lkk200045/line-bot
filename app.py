@@ -78,6 +78,46 @@ def luis(query):
     elif query == '0987787587' :
         a ='0987787587'
         return a
+
+    elif query == '我要找人才' :
+        a ='我要找人才'
+        return a
+    elif query == '高雄人才' :
+        a ='高雄人才'
+        return a
+    elif query == '有' :
+        a ='有'
+        return a
+    elif query == "台南林志玲":
+        a ='台南林志玲'
+        return a
+    elif query == "高雄金城武":
+        a ='高雄金城武'
+        return a
+    elif query == "中山劉德華":
+        a ='中山劉德華'
+        return a
+    elif query == "沒有":
+        a ='沒有'
+        return a
+    elif query == "幫忙接小孩":
+        a ='幫忙接小孩'
+        return a
+    elif query == "中山大學":
+        a ='中山大學'
+        return a
+    elif query == "阿伯":
+        a ='阿伯'
+        return a
+    elif query == "阿伯":
+        a ='阿伯'
+        return a
+    elif query == "0978787587":
+        a ='0978787587'
+        return a
+    elif query == "客訴服務":
+        a ='客訴服務'
+        return a
     else :
         r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
         result = r.json()
@@ -291,6 +331,106 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入電話'))
     elif a == '0987787587' :
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='報名成功 您的序號為001號'))
+    elif a == "我要找人才":
+        buttons_template_message = TemplateSendMessage(
+            alt_text='hi',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://www.limitlessiq.com/media/catalog/product/cache/1/small_image/200x200/9df78eab33525d08d6e5fb8d27136e95/z/0/z01.jpg',
+                title='請選擇所在城市',
+                text='歡迎光臨',
+                actions=[
+                MessageTemplateAction(
+                    label='高雄人才', text='高雄人才'
+                    ),
+                MessageTemplateAction(
+                    label='台北人才', text='台北人才'
+                    ),
+                MessageTemplateAction(
+                    label='台南人才', text='台南人才'
+                    ),
+                MessageTemplateAction(
+                    label='台中人才', text='台中人才'
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(
+            event.reply_token,
+            buttons_template_message)
+    elif a == '高雄人才' :
+        buttons_template_message = TemplateSendMessage(
+            alt_text='hi',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://www.limitlessiq.com/media/catalog/product/cache/1/small_image/200x200/9df78eab33525d08d6e5fb8d27136e95/z/0/z01.jpg',
+                title='請問有指定專員嗎?',
+                text='您好',
+                actions=[
+                MessageTemplateAction(
+                    label='有', text='有'
+                    ),
+                MessageTemplateAction(
+                    label='沒有', text='沒有'
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(
+            event.reply_token,
+            buttons_template_message)
+    elif a == "有": 
+        Carousel_template = TemplateSendMessage(
+            alt_text='Carousel template',
+            template=CarouselTemplate(
+                columns=[
+                CarouselColumn(
+                    thumbnail_image_url='https://cc.tvbs.com.tw/img/upload/2018/08/26/20180826221834-d60f8573.jpg',
+                    title='中山劉德華',
+                    text='搬家界的第一把交椅',
+                    actions=[
+                    MessageTemplateAction(
+                        label='中山劉德華',
+                        text='中山劉德華'
+                    )
+                ]
+            ),
+                CarouselColumn(
+                    thumbnail_image_url='https://cw1.tw/CW/images/article/C1418099648229.jpg',
+                    title='高雄金城武',
+                    text='外賣界的四大天王',
+                    actions=[
+                    MessageTemplateAction(
+                        label='高雄金城武',
+                        text='高雄金城武'
+                    )
+                ]
+            ),
+             CarouselColumn(
+                    thumbnail_image_url='https://fs.mingpao.com/pns/20171215/s00092/5e98a17b98b881b7730d0d6b1e52a14b.jpg',
+                    title='台南林志玲',
+                    text='帶小孩的最美名模',
+                    actions=[
+                    MessageTemplateAction(
+                        label='台南林志玲',
+                        text='台南林志玲'
+                    )
+                ]
+            ),
+        ]
+        )
+    )
+        line_bot_api.reply_message(event.reply_token,Carousel_template)
+    elif a == "台南林志玲" or a == "高雄金城武"or a == "中山劉德華" or a == "沒有":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入工作資訊'))
+    elif a == "幫忙接小孩":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入地點'))
+    elif a == "中山大學":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入姓名'))
+    elif a == "阿伯":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請輸入電話'))
+    elif a == "0978787587":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='完成報名'))
+    elif a == "客訴服務":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='您好，請輸入您的電話，我們將有專人為您服務。'))
     else :
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:不明 回應:可以請你換句話說嗎?'))
        
