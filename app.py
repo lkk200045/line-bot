@@ -54,8 +54,8 @@ def luis(query):
     elif query == "正妹求搬家" :
         a ='正妹求搬家'
         return a
-    elif query == "鹽程幫忙掃地" :
-        a ='鹽程幫忙掃地'
+    elif query == "接小孩" :
+        a ='接小孩'
         return a
     elif query == "中山跑腿小弟" :
         a ='中山跑腿小弟'
@@ -245,12 +245,12 @@ def handle_message(event):
             )
     )
         line_bot_api.reply_message(event.reply_token,Confirm_template)
-    elif a == "鹽程幫忙掃地" :
+    elif a == "接小孩" :
         Confirm_template = TemplateSendMessage(
             alt_text='目錄 template',
             template=ConfirmTemplate(
                 title='確認',
-                text='您選的資料為鹽程幫忙掃地',
+                text='您選的資料為接小孩',
                 actions=[                              
                 PostbackTemplateAction(
                     label='是',
