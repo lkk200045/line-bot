@@ -48,6 +48,9 @@ def luis(query):
     if query == "我要找工作":
         a ='我要找工作'
         return a
+    elif a == "高雄" or a == "台北" or a == "台南" or a == "台中":
+        a ='高雄'
+        return a
     else :
         r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
         result = r.json()
@@ -88,7 +91,74 @@ def handle_message(event):
     elif a=='問候':
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:問候 回應:你好喔'))
     elif a=='我要找工作' :
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='我要找工作'))
+        buttons_template_message = TemplateSendMessage(
+            alt_text='hi',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://www.limitlessiq.com/media/catalog/product/cache/1/small_image/200x200/9df78eab33525d08d6e5fb8d27136e95/z/0/z01.jpg',
+                title='請選擇所在城市',
+                text='歡迎光臨',
+                actions=[
+                MessageTemplateAction(
+                    label='高雄', text='高雄'
+                    ),
+                MessageTemplateAction(
+                    label='台北', text='台北'
+                    ),
+                MessageTemplateAction(
+                    label='台南', text='台南'
+                    ),
+                MessageTemplateAction(
+                    label='台中', text='台中'
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(
+            event.reply_token,
+            buttons_template_message)
+
+    elif a == "高雄" or a == "台北" or a == "台南" or a == "台中":
+        Carousel_template = TemplateSendMessage(
+            alt_text='Carousel template',
+            template=CarouselTemplate(
+                columns=[
+                CarouselColumn(
+                    thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/NSYSU_MS05.JPG/460px-NSYSU_MS05.JPG',
+                    title='中山跑腿小弟',
+                    text='幫忙外送飲料，詳細地點高雄中山大學，時薪200',
+                    actions=[
+                    MessageTemplateAction(
+                        label='中山跑腿小弟',
+                        text='中山跑腿小弟'
+                    )
+                ]
+            ),
+                CarouselColumn(
+                    thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
+                    title='鹽程幫忙掃地',
+                    text='幫忙打掃宿舍，詳細地點鹽埕區五福四路100號，時薪200',
+                    actions=[
+                    MessageTemplateAction(
+                        label='鹽程幫忙掃地',
+                        text='鹽程幫忙掃地'
+                    )
+                ]
+            ),
+             CarouselColumn(
+                    thumbnail_image_url='https://static.juksy.com/files/articles/68605/5a35353b09a3d.jpg',
+                    title='正妹求搬家',
+                    text='幫忙搬家，詳細地點鹽埕區五福四路1號，友情無價，陪你吃頓飯',
+                    actions=[
+                    MessageTemplateAction(
+                        label='正妹求搬家',
+                        text='正妹求搬家'
+                    )
+                ]
+            ),
+        ]
+        )
+    )
+        line_bot_api.reply_message(event.reply_token,Carousel_template)
     else :
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:不明 回應:可以請你換句話說嗎?'))
        
