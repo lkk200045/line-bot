@@ -51,9 +51,6 @@ def luis(query):
     elif a == "高雄" :
         a ='高雄'
         return a
-    elif a == "台北" :
-        a ='台北'
-        return a
     else :
         r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
         result = r.json()
