@@ -157,32 +157,48 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:誇獎 回應:我會不好意思耶'))
     elif a=='問候':
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:問候 回應:你好喔'))
-    elif a=='我要找工作' :
-        buttons_template_message = TemplateSendMessage(
-            alt_text='hi',
-            template=ButtonsTemplate(
-                thumbnail_image_url='https://www.limitlessiq.com/media/catalog/product/cache/1/small_image/200x200/9df78eab33525d08d6e5fb8d27136e95/z/0/z01.jpg',
-                title='請選擇所在城市',
-                text='歡迎光臨',
-                actions=[
-                MessageTemplateAction(
-                    label='高雄', text='高雄'
-                    ),
-                MessageTemplateAction(
-                    label='台北', text='台北'
-                    ),
-                MessageTemplateAction(
-                    label='台南', text='台南'
-                    ),
-                MessageTemplateAction(
-                    label='台中', text='台中'
+    elif a == "我要找工作" :
+        Carousel_template = TemplateSendMessage(
+            alt_text='Carousel template',
+            template=CarouselTemplate(
+                columns=[
+                CarouselColumn(
+                    thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
+                    title='以職務類別區分',
+                    text='',
+                    actions=[
+                    MessageTemplateAction(
+                        label='104歡迎您',
+                        text='選擇職務類別區分'
                     )
                 ]
-            )
+            ),
+                CarouselColumn(
+                    thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
+                    title='以地區區分',
+                    text='',
+                    actions=[
+                    MessageTemplateAction(
+                        label='104歡迎您',
+                        text='選擇地區'
+                    )
+                ]
+            ),
+             CarouselColumn(
+                    thumbnail_image_url='https://static.juksy.com/files/articles/68605/5a35353b09a3d.jpg',
+                    title='以工作性質區分',
+                    text='',
+                    actions=[
+                    MessageTemplateAction(
+                        label='104歡迎您',
+                        text='選擇工作性質'
+                    )
+                ]
+            ),
+        ]
         )
-        line_bot_api.reply_message(
-            event.reply_token,
-            buttons_template_message)
+            )
+        line_bot_api.reply_message(event.reply_token,Carousel_template)
     elif a == "正妹求搬家" :
         Confirm_template = TemplateSendMessage(
             alt_text='目錄 template',
