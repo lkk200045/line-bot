@@ -51,7 +51,7 @@ def luis(query):
     elif query == '我要找人才' :
         a ='我要找人才'
         return a
-    elif query == '依選擇職務類型' :
+    elif query == '依選擇職務類型' or '依地區選擇' or '依工作性質選擇' :
         a = query
         return a
     else :
@@ -136,6 +136,36 @@ def handle_message(event):
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
     elif a=='依選擇職務類型' :
+        buttons_template_message = TemplateSendMessage(
+            alt_text='hi',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://t.kfs.io/upload_images/40763/104___promote.JPG',
+                title='請選擇職務類型',
+                text='歡迎光臨',
+                actions=[
+                MessageTemplateAction(
+                    label='經營/人資類', text='經營/人資類'
+                    ),
+                MessageTemplateAction(
+                    label='行銷/企劃/專案管理類', text='行銷/企劃/專案管理類'
+                    ),
+                MessageTemplateAction(
+                    label='資訊軟體系統類', text='資訊軟體系統類'
+                    ),
+                MessageTemplateAction(
+                    label='研發相關類', text='研發相關類'
+                    ),
+                MessageTemplateAction(
+                    label='其他職類', text='其他職類'
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(
+            event.reply_token,
+            buttons_template_message)
+
+    elif a=='依地區選擇' :
         buttons_template_message = TemplateSendMessage(
             alt_text='hi',
             template=ButtonsTemplate(
