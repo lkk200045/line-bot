@@ -101,30 +101,30 @@ def handle_message(event):
                     text='您好，歡迎光臨',
                     actions=[
                     MessageTemplateAction(
-                        label='選擇職務類型',
-                        text='選擇職務類型'
+                        label='依選擇職務類型',
+                        text='依選擇職務類型'
                     )
                 ]
             ),
                 CarouselColumn(
                     thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
-                    title='接小孩',
-                    text='幫忙接小孩，詳細地點鹽埕區五福四路100號，時薪200',
+                    title='104人力銀行',
+                    text='您好，歡迎光臨',
                     actions=[
-                    URITemplateAction(
-                        label='link-2',
-                        uri='https://www.104.com.tw/jobs/main/'
+                    MessageTemplateAction(
+                        label='依地區選擇',
+                        text='依地區選擇'
                     )
                 ]
             ),
              CarouselColumn(
                     thumbnail_image_url='https://static.juksy.com/files/articles/68605/5a35353b09a3d.jpg',
-                    title='正妹求搬家',
-                    text='幫忙搬家，詳細地點鹽埕區五福四路1號，友情無價，陪你吃頓飯',
+                    title='104人力銀行',
+                    text='您好，歡迎光臨',
                     actions=[
                     MessageTemplateAction(
-                        label='正妹求搬家',
-                        text='正妹求搬家'
+                        label='依工作性質選擇',
+                        text='依工作性質選擇'
                     )
                 ]
             ),
