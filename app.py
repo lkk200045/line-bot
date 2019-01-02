@@ -153,9 +153,6 @@ def handle_message(event):
                     label='資訊軟體系統類', text='資訊軟體系統類'
                     ),
                 MessageTemplateAction(
-                    label='其他職類',text='其他職類'
-                    ),
-                MessageTemplateAction(
                     label='研發相關類', text='研發相關類'
                     )
                 ]
