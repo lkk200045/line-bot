@@ -139,24 +139,21 @@ def handle_message(event):
         buttons_template_message = TemplateSendMessage(
             alt_text='hi',
             template=ButtonsTemplate(
-                thumbnail_image_url='https://t.kfs.io/upload_images/40763/104___promote.JPG',
-                title='請選擇職務類型',
+                thumbnail_image_url='https://www.limitlessiq.com/media/catalog/product/cache/1/small_image/200x200/9df78eab33525d08d6e5fb8d27136e95/z/0/z01.jpg',
+                title='請選擇所在城市',
                 text='歡迎光臨',
                 actions=[
                 MessageTemplateAction(
-                    label='經營/人資類', text='經營/人資類'
+                    label='高雄', text='高雄'
                     ),
                 MessageTemplateAction(
-                    label='行銷/企劃/專案管理類', text='行銷/企劃/專案管理類'
+                    label='台北', text='台北'
                     ),
                 MessageTemplateAction(
-                    label='資訊軟體系統類', text='資訊軟體系統類'
+                    label='台南', text='台南'
                     ),
                 MessageTemplateAction(
-                    label='研發相關類', text='研發相關類'
-                    ),
-                MessageTemplateAction(
-                    label='其他職類', text='其他職類'
+                    label='台中', text='台中'
                     )
                 ]
             )
