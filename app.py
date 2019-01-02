@@ -51,6 +51,9 @@ def luis(query):
     elif query == '我要找人才' :
         a ='我要找人才'
         return a
+    elif query == '依選擇職務類型' :
+        a = query
+        return a
     else :
         r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
         result = r.json()
@@ -107,7 +110,7 @@ def handle_message(event):
                 ]
             ),
                 CarouselColumn(
-                    thumbnail_image_url='https://rakumatw.r10s.com/d/strg/ctrl/27/1852d4cee0e9540099c5db2f1b99936027ffdac2.60.1.27.2.jpg',
+                    thumbnail_image_url='https://static.104.com.tw/104main/jb/area/manjb/home/img/main/a6374579f23c233eb7e46fb4119c3a6d.jpg',
                     title='104人力銀行',
                     text='您好，歡迎光臨',
                     actions=[
@@ -118,7 +121,7 @@ def handle_message(event):
                 ]
             ),
              CarouselColumn(
-                    thumbnail_image_url='https://static.juksy.com/files/articles/68605/5a35353b09a3d.jpg',
+                    thumbnail_image_url='https://static.104.com.tw/104main/jb/area/manjb/home/img/main/4ee93b21011279ea8e005b6c32c6b0ca.jpg',
                     title='104人力銀行',
                     text='您好，歡迎光臨',
                     actions=[
@@ -132,6 +135,32 @@ def handle_message(event):
         )
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
+    elif a=='依選擇職務類型' :
+        buttons_template_message = TemplateSendMessage(
+            alt_text='hi',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://www.limitlessiq.com/media/catalog/product/cache/1/small_image/200x200/9df78eab33525d08d6e5fb8d27136e95/z/0/z01.jpg',
+                title='請選擇所在城市',
+                text='歡迎光臨',
+                actions=[
+                MessageTemplateAction(
+                    label='高雄', text='高雄'
+                    ),
+                MessageTemplateAction(
+                    label='台北', text='台北'
+                    ),
+                MessageTemplateAction(
+                    label='台南', text='台南'
+                    ),
+                MessageTemplateAction(
+                    label='台中', text='台中'
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(
+            event.reply_token,
+            buttons_template_message)
     else :
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:不明 回應:可以請你換句話說嗎?'))
        
