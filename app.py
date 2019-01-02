@@ -156,9 +156,9 @@ def handle_message(event):
                     title='104人力銀行',
                     text='您好，歡迎光臨',
                     actions=[
-                    MessageTemplateAction(
+                    URITemplateAction(
                         label='行銷/企劃/專案管理類',
-                        text='行銷/企劃/專案管理類'
+                        uri='https://www.104.com.tw/jobs/search/?ro=0&jobcat=2004000000&order=2&asc=0&scstrict=0&scneg=1&page=1&mode=s&jobsource=joblist_a_date'
                     )
                 ]
             ),
