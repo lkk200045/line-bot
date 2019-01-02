@@ -97,11 +97,11 @@ def handle_message(event):
                 columns=[
                 CarouselColumn(
                     thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
-                    title='以職務類型區分',
+                    title='104人力銀行',
                     text='您好，歡迎光臨',
                     actions=[
                     MessageTemplateAction(
-                        label='104人力銀行',
+                        label='選擇職務類型',
                         text='選擇職務類型'
                     )
                 ]
@@ -111,9 +111,9 @@ def handle_message(event):
                     title='接小孩',
                     text='幫忙接小孩，詳細地點鹽埕區五福四路100號，時薪200',
                     actions=[
-                    MessageTemplateAction(
-                        label='接小孩',
-                        text='接小孩'
+                    URITemplateAction(
+                        label='link-2',
+                        uri='https://www.104.com.tw/jobs/main/'
                     )
                 ]
             ),
