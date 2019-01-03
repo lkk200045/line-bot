@@ -308,11 +308,11 @@ def handle_message(event):
             ),
             CarouselColumn(
                     thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
-                    title='美商動信安全股份有限公司',
+                    title='一零四資訊科技股份有限公司',
                     text='工作經歷:不拘，薪水7萬以上',
                     actions=[
                     URITemplateAction(
-                        label='Software Engineer(台北)',
+                        label='Java 全端軟體工程師',
                         uri='https://www.104.com.tw/job/?jobno=6cds0&jobsource=joblist_a_date'
                     )
                 ]
