@@ -297,12 +297,12 @@ def handle_message(event):
             ),
              CarouselColumn(
                     thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
-                    title='104人力銀行',
-                    text='您好，歡迎光臨',
+                    title='耐能智慧股份有限公司',
+                    text='工作經歷:五年以上，薪水面議',
                     actions=[
-                    MessageTemplateAction(
-                        label='研發相關類',
-                        text='研發相關類'
+                    URITemplateAction(
+                        label='Software Engineer',
+                        uri='https://www.104.com.tw/job/?jobno=6eol2&jobsource=joblist_a_date'
                     )
                 ]
             ),
