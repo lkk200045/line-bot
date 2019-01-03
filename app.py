@@ -308,7 +308,7 @@ def handle_message(event):
             ),
             CarouselColumn(
                     thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
-                    title='美商動信安全股份有限公司台灣分公司',
+                    title='美商動信安全股份有限公司',
                     text='工作經歷:不拘，薪水7萬以上',
                     actions=[
                     URITemplateAction(
