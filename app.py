@@ -204,7 +204,7 @@ def handle_message(event):
         buttons_template_message = TemplateSendMessage(
             alt_text='hi',
             template=ButtonsTemplate(
-                thumbnail_image_url='https://www.limitlessiq.com/media/catalog/product/cache/1/small_image/200x200/9df78eab33525d08d6e5fb8d27136e95/z/0/z01.jpg',
+                thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
                 title='請選擇所在城市',
                 text='歡迎光臨',
                 actions=[
