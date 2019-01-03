@@ -286,12 +286,12 @@ def handle_message(event):
                 columns=[
              CarouselColumn(
                     thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
-                    title='104人力銀行',
-                    text='您好，歡迎光臨',
+                    title='海悅廣告股份有限公司',
+                    text='工作經歷:兩年以上，薪水面議',
                     actions=[
                     URITemplateAction(
-                        label='經營/人資類',
-                        uri='https://www.104.com.tw/jobs/search/?cat=2001000000&jobsource=joblist_a_date&ro=0'
+                        label='數據分析師',
+                        uri='https://www.104.com.tw/job/?jobno=6fehp&jobsource=joblist_a_date'
                     )
                 ]
             ),
