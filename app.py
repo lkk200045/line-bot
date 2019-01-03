@@ -48,14 +48,11 @@ def luis(query):
     if query == "我要找工作":
         a ='我要找工作'
         return a
-    elif query == '依選擇職務類型' or '依地區選擇' or '依工作性質選擇' :
+    elif query == "高雄" :
+        a ='高雄'
+        return a
+    elif query == "依選擇職務類型" or "依地區選擇" or "依工作性質選擇" :
         a = query
-        return a
-    elif query == "台北" :
-        a ='台北'
-        return a
-    elif query == "正妹求搬家" :
-        a ='正妹求搬家'
         return a
     elif query == "接小孩" :
         a ='接小孩'
@@ -215,6 +212,10 @@ def handle_message(event):
                     URITemplateAction(
                         label='經營/人資類',
                         uri='https://www.104.com.tw/jobs/search/?cat=2001000000&jobsource=joblist_a_date&ro=0'
+                    ),
+                    MessageTemplateAction(
+                        label='依地區選擇',
+                        text='依地區選擇'
                     )
                 ]
             ),
