@@ -312,7 +312,7 @@ def handle_message(event):
                     text='工作經歷:不拘，薪水7萬以上',
                     actions=[
                     URITemplateAction(
-                        label='Windows Software Engineer(台北)',
+                        label='Software Engineer(台北)',
                         uri='https://www.104.com.tw/job/?jobno=6cds0&jobsource=joblist_a_date'
                     )
                 ]
