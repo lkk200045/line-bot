@@ -154,7 +154,7 @@ def handle_message(event):
                     title='104人力銀行',
                     text='您好，歡迎光臨',
                     actions=[
-                     MessageTemplateAction(
+                    MessageTemplateAction(
                         label='資訊軟體系統類',
                         text='資訊軟體系統類'
                     ),
@@ -290,8 +290,8 @@ def handle_message(event):
                 columns=[
              CarouselColumn(
                     thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
-                    title='104人力銀行',
-                    text='您好，歡迎光臨',
+                    title='海悅廣告股份有限公司',
+                    text='工作經歷:兩年以上，薪水面議',
                     actions=[
                     URITemplateAction(
                         label='數據分析師',
@@ -301,23 +301,34 @@ def handle_message(event):
             ),
              CarouselColumn(
                     thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
-                    title='104人力銀行',
-                    text='您好，歡迎光臨',
+                    title='耐能智慧股份有限公司',
+                    text='工作經歷:五年以上，薪水面議',
                     actions=[
-                    MessageTemplateAction(
-                        label='研發相關類',
-                        text='研發相關類'
+                    URITemplateAction(
+                        label='Software Engineer (Embedded Firmware / BSP)',
+                        uri='https://www.104.com.tw/job/?jobno=6eol2&jobsource=joblist_a_date'
                     )
                 ]
             ),
             CarouselColumn(
                     thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
-                    title='104人力銀行',
-                    text='您好，歡迎光臨',
+                    title='美商動信安全股份有限公司台灣分公司',
+                    text='工作經歷:不拘，薪水7萬以上',
                     actions=[
-                    MessageTemplateAction(
-                        label='其他職類',
-                        text='其他職類'
+                    URITemplateAction(
+                        label='Sr. Windows Software Engineer(台北)',
+                        uri='https://www.104.com.tw/job/?jobno=6cds0&jobsource=joblist_a_date'
+                    )
+                ]
+            ),
+            CarouselColumn(
+                    thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
+                    title='更多資料',
+                    text='',
+                    actions=[
+                    URITemplateAction(
+                        label='更多資料',
+                        uri='https://www.104.com.tw/jobs/search/?area=6001001000&cat=2007000000&jobsource=joblist_a_date&ro=0'
                     )
                 ]
             ), 
