@@ -48,8 +48,8 @@ def luis(query):
     if query == "我要找工作":
         a ='我要找工作'
         return a
-    elif query == "高雄" :
-        a ='高雄'
+    elif query == "台北" :
+        a ='台北'
         return a
     elif query == "依選擇職務類型"  :
         a = '依選擇職務類型'
@@ -215,10 +215,10 @@ def handle_message(event):
                 text='歡迎光臨',
                 actions=[
                 MessageTemplateAction(
-                    label='高雄', text='高雄'
+                    label='台北', text='台北'
                     ),
                 MessageTemplateAction(
-                    label='台北', text='台北'
+                    label='高雄', text='高雄'
                     ),
                 MessageTemplateAction(
                     label='台南', text='台南'
@@ -232,6 +232,50 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             buttons_template_message)
+
+    elif a =='台北' :
+        Carousel_template = TemplateSendMessage(
+            alt_text='Carousel template',
+            template=CarouselTemplate(
+                columns=[
+             CarouselColumn(
+                    thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
+                    title='104人力銀行',
+                    text='您好，歡迎光臨',
+                    actions=[
+                    MessageTemplateAction(
+                        label='資訊軟體系統類',
+                        text='資訊軟體系統類'
+                    )
+                ]
+            ),
+             CarouselColumn(
+                    thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
+                    title='104人力銀行',
+                    text='您好，歡迎光臨',
+                    actions=[
+                    MessageTemplateAction(
+                        label='研發相關類',
+                        text='研發相關類'
+                    )
+                ]
+            ),
+            CarouselColumn(
+                    thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
+                    title='104人力銀行',
+                    text='您好，歡迎光臨',
+                    actions=[
+                    MessageTemplateAction(
+                        label='其他職類',
+                        text='其他職類'
+                    )
+                ]
+            ), 
+        ]
+        )
+    )
+        line_bot_api.reply_message(event.reply_token,Carousel_template)
+
     else :
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:不明 回應:可以請你換句話說嗎?'))
        
