@@ -279,70 +279,7 @@ def handle_message(event):
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
 
-    elif a=='資訊軟體系統類':
-       Carousel_template = TemplateSendMessage(
-            alt_text='Carousel template',
-            template=CarouselTemplate(
-                columns=[
-                CarouselColumn(
-                    thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
-                    title='104人力銀行',
-                    text='您好，歡迎光臨',
-                    actions=[
-                    URITemplateAction(
-                        label='經營/人資類',
-                        uri='https://www.104.com.tw/jobs/search/?cat=2001000000&jobsource=joblist_a_date&ro=0'
-                    )
-                ]
-            ),
-                CarouselColumn(
-                    thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
-                    title='104人力銀行',
-                    text='您好，歡迎光臨',
-                    actions=[
-                    URITemplateAction(
-                        label='行銷/企劃/專案管理類',
-                        uri='https://www.104.com.tw/jobs/search/?ro=0&jobcat=2004000000&order=2&asc=0&scstrict=0&scneg=1&page=1&mode=s&jobsource=joblist_a_date'
-                    )
-                ]
-            ),
-             CarouselColumn(
-                    thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
-                    title='104人力銀行',
-                    text='您好，歡迎光臨',
-                    actions=[
-                    MessageTemplateAction(
-                        label='資訊軟體系統類',
-                        text='資訊軟體系統類'
-                    )
-                ]
-            ),
-             CarouselColumn(
-                    thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
-                    title='104人力銀行',
-                    text='您好，歡迎光臨',
-                    actions=[
-                    MessageTemplateAction(
-                        label='研發相關類',
-                        text='研發相關類'
-                    )
-                ]
-            ),
-            CarouselColumn(
-                    thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
-                    title='104人力銀行',
-                    text='您好，歡迎光臨',
-                    actions=[
-                    MessageTemplateAction(
-                        label='其他職類',
-                        text='其他職類'
-                    )
-                ]
-            ), 
-        ]
-        )
-    )
-        line_bot_api.reply_message(event.reply_token,Carousel_template) 
+
 
     else :
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:不明 回應:可以請你換句話說嗎?'))
