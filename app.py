@@ -51,8 +51,8 @@ def luis(query):
     elif query == "高雄" :
         a ='高雄'
         return a
-    elif query == "依選擇職務類型" or "依地區選擇" or "依工作性質選擇" :
-        a = query
+    elif query == "依選擇職務類型"  :
+        a = '依選擇職務類型'
         return a
     elif query == "接小孩" :
         a ='接小孩'
