@@ -54,7 +54,34 @@ def luis(query):
     elif query == "台北" :
         a ='台北'
         return a
-        
+    elif query == "正妹求搬家" :
+        a ='正妹求搬家'
+        return a
+    elif query == "接小孩" :
+        a ='接小孩'
+        return a
+    elif query == "中山跑腿小弟" :
+        a ='中山跑腿小弟'
+        return a
+    elif query == "是" :
+        a ='是'
+        return a
+    elif query == "否" :
+        a ='否'
+        return a
+    elif query == '學生兼差' :
+        a ='學生兼差'
+        return a
+    elif query == '上班族兼差' :
+        a ='上班族兼差'
+        return a
+    elif query == '小明' :
+        a ='小明'
+        return a
+    elif query == '0987787587' :
+        a ='0987787587'
+        return a
+
     elif query == '我要找人才' :
         a ='我要找人才'
         return a
