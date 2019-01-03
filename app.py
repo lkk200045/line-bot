@@ -48,17 +48,81 @@ def luis(query):
     if query == "我要找工作":
         a ='我要找工作'
         return a
+    elif query == "高雄" :
+        a ='高雄'
+        return a
+    elif query == "正妹求搬家" :
+        a ='正妹求搬家'
+        return a
+    elif query == "接小孩" :
+        a ='接小孩'
+        return a
+    elif query == "中山跑腿小弟" :
+        a ='中山跑腿小弟'
+        return a
+    elif query == "是" :
+        a ='是'
+        return a
+    elif query == "否" :
+        a ='否'
+        return a
+    elif query == '學生兼差' :
+        a ='學生兼差'
+        return a
+    elif query == '上班族兼差' :
+        a ='上班族兼差'
+        return a
+    elif query == '小明' :
+        a ='小明'
+        return a
+    elif query == '0987787587' :
+        a ='0987787587'
+        return a
+
     elif query == '我要找人才' :
         a ='我要找人才'
         return a
-    elif query == '依選擇職務類型' or '依地區選擇' or '依工作性質選擇' :
-        a = query
+    elif query == '高雄人才' :
+        a ='高雄人才'
+        return a
+    elif query == '有' :
+        a ='有'
+        return a
+    elif query == "台南林志玲":
+        a ='台南林志玲'
+        return a
+    elif query == "高雄金城武":
+        a ='高雄金城武'
+        return a
+    elif query == "中山劉德華":
+        a ='中山劉德華'
+        return a
+    elif query == "沒有":
+        a ='沒有'
+        return a
+    elif query == "幫忙接小孩":
+        a ='幫忙接小孩'
+        return a
+    elif query == "中山大學":
+        a ='中山大學'
+        return a
+    elif query == "阿伯":
+        a ='阿伯'
+        return a
+    elif query == "阿伯":
+        a ='阿伯'
+        return a
+    elif query == "0978787587":
+        a ='0978787587'
+        return a
+    elif query == "客訴服務":
+        a ='客訴服務'
         return a
     else :
         r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
         result = r.json()
         a = result['topScoringIntent']['intent']
-        return a     
+        return a    
 
 @app.route("/callback", methods=['POST'])
 def callback():
