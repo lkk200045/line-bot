@@ -60,6 +60,9 @@ def luis(query):
     elif query == "依工作性質選擇"  :
         a = '依工作性質選擇'
         return a
+    elif query == "資訊軟體系統類"  :
+        a = '資訊軟體系統類'
+        return a
     else :
         r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
         result = r.json()
@@ -151,6 +154,10 @@ def handle_message(event):
                     title='104人力銀行',
                     text='您好，歡迎光臨',
                     actions=[
+                     MessageTemplateAction(
+                        label='資訊軟體系統類',
+                        text='資訊軟體系統類'
+                    ),
                     URITemplateAction(
                         label='經營/人資類',
                         uri='https://www.104.com.tw/jobs/search/?cat=2001000000&jobsource=joblist_a_date&ro=0'
@@ -234,7 +241,6 @@ def handle_message(event):
             buttons_template_message)
 
     elif a =='台北' :
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請選擇職務類別'))
         Carousel_template = TemplateSendMessage(
             alt_text='Carousel template',
             template=CarouselTemplate(
@@ -247,6 +253,49 @@ def handle_message(event):
                     MessageTemplateAction(
                         label='資訊軟體系統類',
                         text='資訊軟體系統類'
+                    )
+                ]
+            ),
+             CarouselColumn(
+                    thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
+                    title='104人力銀行',
+                    text='您好，歡迎光臨',
+                    actions=[
+                    MessageTemplateAction(
+                        label='研發相關類',
+                        text='研發相關類'
+                    )
+                ]
+            ),
+            CarouselColumn(
+                    thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
+                    title='104人力銀行',
+                    text='您好，歡迎光臨',
+                    actions=[
+                    MessageTemplateAction(
+                        label='其他職類',
+                        text='其他職類'
+                    )
+                ]
+            ), 
+        ]
+        )
+    )
+        line_bot_api.reply_message(event.reply_token,Carousel_template)
+
+    elif a=='資訊軟體系統類':
+        Carousel_template = TemplateSendMessage(
+            alt_text='Carousel template',
+            template=CarouselTemplate(
+                columns=[
+             CarouselColumn(
+                    thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
+                    title='104人力銀行',
+                    text='您好，歡迎光臨',
+                    actions=[
+                    URITemplateAction(
+                        label='數據分析師',
+                        uri='https://www.104.com.tw/job/?jobno=6fehp&jobsource=joblist_a_date'
                     )
                 ]
             ),
