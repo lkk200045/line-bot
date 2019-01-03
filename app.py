@@ -234,6 +234,7 @@ def handle_message(event):
             buttons_template_message)
 
     elif a =='台北' :
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='請選擇職務類別'))
         Carousel_template = TemplateSendMessage(
             alt_text='Carousel template',
             template=CarouselTemplate(
