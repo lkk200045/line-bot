@@ -63,6 +63,9 @@ def luis(query):
     elif query == "資訊軟體系統類"  :
         a = '資訊軟體系統類'
         return a
+    elif query == "104人力銀行"  :
+        a = '104人力銀行'
+        return a
     else :
         r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/d9f3feb1-6cf3-4f39-8821-e6c2bbb86fc6',headers=headers, params=params)
         result = r.json()
@@ -333,7 +336,59 @@ def handle_message(event):
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
 
-
+    elif a =='104人力銀行' :
+        Carousel_template = TemplateSendMessage(
+            alt_text='Carousel template',
+            template=CarouselTemplate(
+                columns=[
+             CarouselColumn(
+                    thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
+                    title='一零四資訊科技股份有限公司',
+                    text='工作經歷:五年以上，薪水面議',
+                    actions=[
+                    URITemplateAction(
+                        label='投資專案經理',
+                        uri='https://www.104.com.tw/job/?jobno=4py9s&jobsource=hotjob_chr'
+                    )
+                ]
+            ),
+             CarouselColumn(
+                    thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
+                    title='一零四資訊科技股份有限公司',
+                    text='工作經歷:三年以上，薪水面議',
+                    actions=[
+                    URITemplateAction(
+                        label='PHP 全端軟體工程師',
+                        uri='https://www.104.com.tw/job/?jobno=63s4m&jobsource=hotjob_chr'
+                    )
+                ]
+            ),
+            CarouselColumn(
+                    thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
+                    title='一零四資訊科技股份有限公司',
+                    text='工作經歷:不拘，薪水7萬以上',
+                    actions=[
+                    URITemplateAction(
+                        label='Java 全端軟體工程師',
+                        uri='https://www.104.com.tw/job/?jobno=6cds0&jobsource=joblist_a_date'
+                    )
+                ]
+            ),  
+            CarouselColumn(
+                    thumbnail_image_url='https://www.104.com.tw/jobs/main/static/img/fb_600x315.png',
+                    title='更多工作',
+                    text='自行參考',
+                    actions=[
+                    URITemplateAction(
+                        label='更多工作',
+                        uri='https://www.104.com.tw/jobs/search/?keyword=104%E4%BA%BA%E5%8A%9B%E9%8A%80%E8%A1%8C&jobsource=2018indexpoc&ro=0&order=1'
+                    )
+                ]
+            ),
+        ]
+        )
+    )
+        line_bot_api.reply_message(event.reply_token,Carousel_template)
 
     else :
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:不明 回應:可以請你換句話說嗎?'))
