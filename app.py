@@ -14,8 +14,12 @@ from linebot.models import (
     ImageSendMessage,LocationMessage,TemplateSendMessage, ButtonsTemplate, URITemplateAction,
     PostbackTemplateAction, MessageTemplateAction, CarouselTemplate, CarouselColumn, ConfirmTemplate
 )
-
-
+from bs4 import BeautifulSoup
+import re
+url = 'https://tw.stock.yahoo.com/d/i/rank.php?t=vol&e=tse'
+resp = requests.get(url)
+soup = BeautifulSoup(resp.text, 'html.parser')
+dcard_title = soup.find_all('td', re.compile('name'))
 headers = {
     # Request headers
     'Ocp-Apim-Subscription-Key': '5cf8bae594b24645bc0971c7b1169ed9',
@@ -97,6 +101,8 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:告白 回應:我不愛妳'))
     elif a=='聊天':
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:聊天 回應:我不想聊天'))
+    elif a=='bug':
+    	line_bot_api.reply_message(event.reply_token,TextSendMessage(text=dcard_title))
     elif a=='例外':
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='意圖:例外 回應:我聽不懂耶'))
     elif a=='詢問':
