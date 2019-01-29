@@ -1,12 +1,9 @@
-import requests #引入函式庫
+import requests
 from bs4 import BeautifulSoup
-import re
-url = 'https://tw.stock.yahoo.com/d/i/rank.php?t=vol&e=tse'
-resp = requests.get(url)
-soup = BeautifulSoup(resp.text, 'html.parser')
-dcard_title = soup.find_all('td', re.compile('name'))
-print(dcard_title)
-if dcard_title =='國泰金':
-	print(hello)
-	low = soup.find_all('td', re.compile('low'))
-	print(low)
+
+r = requests.get("https://www.ptt.cc/bbs/MobileComm/index.html") #將網頁資料GET下來
+soup = BeautifulSoup(r.text,"html.parser") #將網頁資料以html.parser
+sel = soup.select("div.title a") #取HTML標中的 <div class="title"></div> 中的<a>標籤存入sel
+print(sel)
+for s in sel:
+    print(s["href"], s.text) 

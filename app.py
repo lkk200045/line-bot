@@ -15,7 +15,12 @@ from linebot.models import (
     PostbackTemplateAction, MessageTemplateAction, CarouselTemplate, CarouselColumn, ConfirmTemplate
 )
 
+from bs4 import BeautifulSoup
 
+r = requests.get("https://www.ptt.cc/bbs/MobileComm/index.html") #將網頁資料GET下來
+soup = BeautifulSoup(r.text,"html.parser") #將網頁資料以html.parser
+sel = soup.select("div.title a") #取HTML標中的 <div class="title"></div> 中的<a>標籤存入sel
+print(sel)
 headers = {
     # Request headers
     'Ocp-Apim-Subscription-Key': '5cf8bae594b24645bc0971c7b1169ed9',
